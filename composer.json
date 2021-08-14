@@ -19,7 +19,8 @@
     }
   },
   "require": {
-    "league/container": "3.3"
+    "league/container": "3.3",
+    "wa72/url": "^0.7.1"
   },
   "require-dev": {
     "wp-coding-standards/wpcs": "2.3.0",
