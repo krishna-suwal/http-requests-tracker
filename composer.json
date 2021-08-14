@@ -22,7 +22,10 @@
       "league/container": "3.3"
     },
     "require-dev": {
-      "wp-cli/i18n-command": "^2.2"
+      "wp-coding-standards/wpcs": "2.3.0",
+      "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
+      "phpcompatibility/phpcompatibility-wp": "2.1.0",
+      "sirbrillig/phpcs-variable-analysis": "2.8"
     },
     "scripts": {
       "test:php:unit": [
@@ -39,7 +42,9 @@
       ],
       "makepot": [
         "\"vendor/bin/wp\" i18n make-pot . ./i18n/languages/hrt.pot"
-      ]
+      ],
+      "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+      "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
     },
     "extra": {
       "scripts-description": {
@@ -50,4 +55,3 @@
       }
     }
   }
-  

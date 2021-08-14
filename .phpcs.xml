@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+	<description>PHP_CodeSniffer ruleset.</description>
+
+	<file>.</file>
+
+	<!-- Exclude paths -->
+	<exclude-pattern>tests/</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="ps" />
+
+	<!-- Check up to 8 files simultaneously. -->
+	<arg name="parallel" value="8" />
+
+	<!-- Strip the filepaths in reports down to the relevant bit. -->
+	<arg name="basepath" value="./" />
+
+	<!-- Check for specific valid file extensions. -->
+	<arg name="extensions" value="php" />
+
+	<!-- Configs -->
+	<config name="minimum_supported_wp_version" value="5.0" />
+	<config name="testVersion" value="5.6-" />
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/phpcompatibility/php-compatibility" />
+
+	<!-- PHPCompatibility -->
+	<rule ref="PHPCompatibility">
+		<exclude-pattern>tests/</exclude-pattern>
+	</rule>
+
+	<!-- Rules -->
+	<rule ref="WordPress-Extra">
+		<!-- <exclude name="Generic.Commenting.DocComment.SpacingAfter" /> -->
+		<!-- <exclude name="Generic.Files.LineEndings.InvalidEOLChar" /> -->
+		<!-- <exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" /> -->
+		<!-- <exclude name="PEAR.Functions.FunctionCallSignature" /> -->
+		<!-- <exclude name="Squiz.Commenting" /> -->
+		<!-- <exclude name="Squiz.PHP.DisallowSizeFunctionsInLoops.Found" /> -->
+		<!-- <exclude name="WordPress.Arrays" /> -->
+		<exclude name="WordPress.Files.FileName" />
+		<!-- <exclude name="WordPress.NamingConventions" /> -->
+		<!-- <exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" /> -->
+		<!-- <exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" /> -->
+		<!-- <exclude name="WordPress.WhiteSpace" /> -->
+	</rule>
+
+	<rule ref="WordPress-Core">
+		<exclude name="Core.Commenting.CommentTags.AuthorTag" />
+		<exclude name="WordPress.PHP.DontExtract" />
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="hrt" />
+		</properties>
+	</rule>
+</ruleset>
