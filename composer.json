@@ -1,57 +1,55 @@
 {
-    "name": "krishna-suwal/http-requests-tracker",
-    "description": "An http requests tracker plugin",
-    "version": "0.1.0",
-    "homepage": "https://example.com",
-    "license": "GPL-2.0-or-later",
-    "type": "wordpress-plugin",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "authors": [
-      {
-        "name": "Krishna Suwal"
-      }
+  "name": "krishna-suwal/http-requests-tracker",
+  "description": "An http requests tracker plugin",
+  "version": "0.1.0",
+  "homepage": "https://example.com",
+  "license": "GPL-2.0-or-later",
+  "type": "wordpress-plugin",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Krishna Suwal"
+    }
+  ],
+  "autoload": {
+    "files": [],
+    "psr-4": {
+      "HRT\\": "includes/"
+    }
+  },
+  "require": {
+    "league/container": "3.3"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "2.3.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
+    "phpcompatibility/phpcompatibility-wp": "2.1.0",
+    "sirbrillig/phpcs-variable-analysis": "2.8"
+  },
+  "scripts": {
+    "test:php:unit": [
+      "./vendor/bin/phpunit"
     ],
-    "autoload": {
-      "files": [],
-      "psr-4": {
-        "HRT\\": "includes/"
-      }
-    },
-    "require": {
-      "league/container": "3.3"
-    },
-    "require-dev": {
-      "wp-coding-standards/wpcs": "2.3.0",
-      "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
-      "phpcompatibility/phpcompatibility-wp": "2.1.0",
-      "sirbrillig/phpcs-variable-analysis": "2.8"
-    },
-    "scripts": {
-      "test:php:unit": [
-        "./vendor/bin/phpunit"
-      ],
-      "phpcs": [
-        "phpcs"
-      ],
-      "phpcbf": [
-        "phpcbf"
-      ],
-      "makepot-audit": [
-        "wp i18n make-pot . --slug=hrt"
-      ],
-      "makepot": [
-        "\"vendor/bin/wp\" i18n make-pot . ./i18n/languages/hrt.pot"
-      ],
-      "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
-      "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
-    },
-    "extra": {
-      "scripts-description": {
-        "phpcs": "Analyze code against the WordPress coding standard with PHP_CodeSniffer",
-        "phpcbf": "Fix coding standards warnings/errors automattically with PHP Code Beautifier",
-        "makepot-audit": "Generate langauges/wp-plugin-starter.pot file and run audit",
-        "makepot": "Generate langauges/wp-plugin-starter.pot file"
-      }
+    "phpcs": [
+      "phpcs"
+    ],
+    "phpcbf": [
+      "phpcbf"
+    ],
+    "makepot-audit": [
+      "wp i18n make-pot . --slug=hrt"
+    ],
+    "makepot": [
+      "\"vendor/bin/wp\" i18n make-pot . ./i18n/languages/hrt.pot"
+    ]
+  },
+  "extra": {
+    "scripts-description": {
+      "phpcs": "Analyze code against the WordPress coding standard with PHP_CodeSniffer",
+      "phpcbf": "Fix coding standards warnings/errors automattically with PHP Code Beautifier",
+      "makepot-audit": "Generate langauges/wp-plugin-starter.pot file and run audit",
+      "makepot": "Generate langauges/wp-plugin-starter.pot file"
     }
   }
+}
