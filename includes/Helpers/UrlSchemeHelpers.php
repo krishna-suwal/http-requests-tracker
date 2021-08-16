@@ -7,8 +7,6 @@
 
 use HRT\UrlSchemes\UrlScheme;
 
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Match a url with a URL scheme.
  *

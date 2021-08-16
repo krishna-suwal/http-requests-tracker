@@ -5,8 +5,6 @@
  * @since 0.1.0
  */
 
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Check if the current request URL should be logged.
  *

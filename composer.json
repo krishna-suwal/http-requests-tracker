@@ -29,11 +29,13 @@
     "wp-coding-standards/wpcs": "2.3.0",
     "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
     "phpcompatibility/phpcompatibility-wp": "2.1.0",
-    "sirbrillig/phpcs-variable-analysis": "2.8"
+    "sirbrillig/phpcs-variable-analysis": "2.8",
+    "phpunit/phpunit": "5.*",
+    "wp-cli/wp-cli": "^2.4"
   },
   "scripts": {
     "test:php:unit": [
-      "./vendor/bin/phpunit"
+      "\"./vendor/bin/phpunit\""
     ],
     "phpcs": [
       "phpcs"

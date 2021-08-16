@@ -5,7 +5,6 @@
 	<file>.</file>
 
 	<!-- Exclude paths -->
-	<exclude-pattern>tests/</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
@@ -27,7 +26,6 @@
 
 	<!-- PHPCompatibility -->
 	<rule ref="PHPCompatibility">
-		<exclude-pattern>tests/</exclude-pattern>
 	</rule>
 
 	<!-- Rules -->
