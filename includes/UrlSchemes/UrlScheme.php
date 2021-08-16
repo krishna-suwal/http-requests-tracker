@@ -45,6 +45,19 @@ abstract class UrlScheme {
 	}
 
 	/**
+	 * Check if an attribute is set.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $name
+	 *
+	 * @return mixed
+	 */
+	public function has( $name ) {
+		return isset( $this->data[ $name ] );
+	}
+
+	/**
 	 * Get attribute.
 	 *
 	 * @since 0.1.0
@@ -54,6 +67,9 @@ abstract class UrlScheme {
 	 * @return mixed
 	 */
 	public function get( $name ) {
+		if ( ! isset( $this->data[ $name ] ) ) {
+			return null;
+		}
 		return $this->data[ $name ];
 	}
 
