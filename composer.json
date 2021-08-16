@@ -37,6 +37,9 @@
     "test:php:unit": [
       "\"./vendor/bin/phpunit\""
     ],
+    "test:php:unit:quick": [
+      "WP_TESTS_SKIP_INSTALL=1 \"./vendor/bin/phpunit\""
+    ],
     "phpcs": [
       "phpcs"
     ],
