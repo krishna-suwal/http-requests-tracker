@@ -21,3 +21,4 @@ dist/
 .parcel-cache
 .cache
 i18n/languages/hrt.pot
+.vscode/launch.json
