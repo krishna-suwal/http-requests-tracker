@@ -52,6 +52,7 @@ class HTTPRequestsTracker {
 
 		PermissionsList::register_all();
 		RoutesRegistrar::init();
+		ScriptStyle::init();
 	}
 
 	/**
