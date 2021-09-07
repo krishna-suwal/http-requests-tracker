@@ -1,0 +1,12 @@
+# Menus heirarchy
+- Stats
+--- Logs
+--- Statistics
+- URL Schemes
+--- List Screen
+--- Edit Screen
+--- Create Screen
+- Settings
+--- Debug Mode
+--- Allow to show stats on frontend
+- Debugger (if Debug Mode is true)
