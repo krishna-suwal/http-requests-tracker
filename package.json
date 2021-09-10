@@ -24,6 +24,7 @@
     "get-video-id": "3.2.0",
     "humanize-duration": "3.27.0",
     "little-state-machine": "4.1.2",
+    "nanoid": "3.1.25",
     "query-string": "7.0.1",
     "react": "17.0.1",
     "react-beautiful-dnd": "13.1.0",
