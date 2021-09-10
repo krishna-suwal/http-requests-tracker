@@ -11,7 +11,6 @@ import UrlSchemesList from './UrlSchemesList';
 const AllUrlSchemes = () => {
 	const {
 		array: urlSchemes,
-		remove,
 		push,
 		set,
 	} = useArray([

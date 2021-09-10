@@ -11,7 +11,7 @@ import {
 import { __ } from '@wordpress/i18n';
 import queryString from 'query-string';
 import React, { useState } from 'react';
-import { BiBook, BiEdit } from 'react-icons/bi';
+import { BiBook, BiStats } from 'react-icons/bi';
 import { useHistory, useLocation } from 'react-router-dom';
 import Header from '../../components/common/Header';
 import routes from '../../constants/routes';
@@ -19,13 +19,27 @@ import useArray from '../../utils/useArray';
 import Graphs from './Graphs';
 import Logs from './Logs';
 
+const tabStyles = {
+	fontWeight: 'medium',
+	fontSize: 'sm',
+	py: '6',
+	px: 0,
+	mx: 4,
+	_hover: {
+		color: 'blue.500',
+	},
+};
+
+const tabPanelStyles = {
+	px: '0',
+};
+
+const iconStyles = {
+	mr: '2',
+};
+
 const AllStats = () => {
-	const {
-		array: logs,
-		remove,
-		push,
-		set,
-	} = useArray([
+	const { array: logs } = useArray([
 		{
 			id: 1,
 			type: 'error',
@@ -42,25 +56,6 @@ const AllStats = () => {
 	const { search } = useLocation();
 	const { page } = queryString.parse(search);
 	const [tabIndex, setTabIndex] = useState<number>(page === 'graphs' ? 1 : 0);
-
-	const tabStyles = {
-		fontWeight: 'medium',
-		fontSize: 'sm',
-		py: '6',
-		px: 0,
-		mx: 4,
-		_hover: {
-			color: 'blue.500',
-		},
-	};
-
-	const tabPanelStyles = {
-		px: '0',
-	};
-
-	const iconStyles = {
-		mr: '2',
-	};
 
 	return (
 		<Tabs index={tabIndex} onChange={(index) => setTabIndex(index)}>
@@ -86,7 +81,7 @@ const AllStats = () => {
 									search: '?page=graphs',
 								});
 							}}>
-							<Icon as={BiEdit} sx={iconStyles} />
+							<Icon as={BiStats} sx={iconStyles} />
 							{__('Graphs', 'hrt')}
 						</Tab>
 					</TabList>

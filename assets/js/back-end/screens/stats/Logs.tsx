@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { tableStyles } from '../../config/styles';
 import { LogType } from '../../types';
 import LogItem from './components/LogItem';
@@ -31,7 +30,6 @@ interface Props {
 
 const Logs: React.FC<Props> = (props) => {
 	const { items, onClickRemoveItem } = props;
-	const history = useHistory();
 	const cancelRef = React.useRef<any>();
 
 	const { onClose, onOpen, isOpen } = useDisclosure();
