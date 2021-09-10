@@ -26,9 +26,9 @@ const StatsSettings: React.FC<Props> = (props) => {
 			<FormControl>
 				<Stack direction="row">
 					<FormLabel minW="xs">
-						{__('Allow to show stats on frontend', 'masteriyo')}
+						{__('Allow to show stats on frontend', 'hrt')}
 						<Tooltip
-							label={__('Allow to show stats on frontend', 'masteriyo')}
+							label={__('Allow to show stats on frontend', 'hrt')}
 							hasArrow
 							fontSize="xs">
 							<Box as="span" sx={infoIconStyles}>

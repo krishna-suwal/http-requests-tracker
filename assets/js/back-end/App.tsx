@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import MasteriyoProvider from './context/MasteriyoProvider';
+import HrtProvider from './context/HrtProvider';
 import ErrorBoundary from './errors/ErrorBoundary';
 import Router from './router/Router';
 import theme from './theme/theme';
@@ -20,11 +20,11 @@ const App = () => {
 	return (
 		<ChakraProvider theme={theme}>
 			<ErrorBoundary>
-				<MasteriyoProvider>
+				<HrtProvider>
 					<QueryClientProvider client={queryClient}>
 						<Router />
 					</QueryClientProvider>
-				</MasteriyoProvider>
+				</HrtProvider>
 			</ErrorBoundary>
 		</ChakraProvider>
 	);

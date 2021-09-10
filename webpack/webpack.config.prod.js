@@ -14,7 +14,7 @@ module.exports = (env) => ({
 	entry: baseConfig.paths.entry,
 
 	output: {
-		filename: 'masteriyo-[name].js',
+		filename: 'hrt-[name].js',
 		path: baseConfig.paths.output,
 	},
 
@@ -64,7 +64,7 @@ module.exports = (env) => ({
 	},
 
 	plugins: [
-		new MiniCSSExtractPlugin({ filename: 'masteriyo-[name].css' }),
+		new MiniCSSExtractPlugin({ filename: 'hrt-[name].css' }),
 		new CleanWebpackPlugin(),
 		new Dotenv(),
 		new WebpackBar(),

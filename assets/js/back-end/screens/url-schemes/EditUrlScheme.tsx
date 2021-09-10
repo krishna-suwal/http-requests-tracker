@@ -73,7 +73,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 			<Container maxW="container.xl">
 				<Stack direction="column" spacing="8">
 					<Heading as="h1" size="xl">
-						{__('Edit URL Scheme', 'masteriyo')}
+						{__('Edit URL Scheme', 'hrt')}
 					</Heading>
 					{data && (
 						<form onSubmit={methods.handleSubmit(callSubmit)}>
@@ -84,10 +84,10 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								p="10"
 								shadow="box">
 								<FormControl isInvalid={!!errors?.title}>
-									<FormLabel>{__('Title', 'masteriyo')}</FormLabel>
+									<FormLabel>{__('Title', 'hrt')}</FormLabel>
 									<Input
 										defaultValue={data.title}
-										placeholder={__('Title', 'masteriyo')}
+										placeholder={__('Title', 'hrt')}
 										{...register('title')}
 									/>
 									<FormErrorMessage>
@@ -95,11 +95,11 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 									</FormErrorMessage>
 								</FormControl>
 								<FormControl isInvalid={!!errors?.type}>
-									<FormLabel>{__('Type', 'masteriyo')}</FormLabel>
+									<FormLabel>{__('Type', 'hrt')}</FormLabel>
 									<Select
 										defaultValue={data.type}
 										{...register('type', {
-											required: __('Please select a type', 'masteriyo'),
+											required: __('Please select a type', 'hrt'),
 										})}>
 										{urlSchemeTypes.map((option) => (
 											<option key={option.value} value={option.value}>
@@ -114,7 +114,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								<Divider />
 								<ButtonGroup>
 									<Button colorScheme="blue" type="submit">
-										{__('Update', 'masteriyo')}
+										{__('Update', 'hrt')}
 									</Button>
 									<Button
 										variant="outline"
@@ -123,7 +123,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 												pathname: routes.urlSchemes.list,
 											})
 										}>
-										{__('Cancel', 'masteriyo')}
+										{__('Cancel', 'hrt')}
 									</Button>
 								</ButtonGroup>
 							</Stack>
@@ -131,7 +131,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 					)}
 					{!data && (
 						<Text fontSize="xs" fontWeight="medium" color="gray.600">
-							{__('Data not found!', 'masteriyo')}
+							{__('Data not found!', 'hrt')}
 						</Text>
 					)}
 				</Stack>

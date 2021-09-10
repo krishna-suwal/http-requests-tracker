@@ -1,11 +1,11 @@
 import React, { createContext, useMemo, useState } from 'react';
 
-export const MasteriyoContext = createContext<{
+export const HrtContext = createContext<{
 	mtoOptions: any;
 	setMtoOptions?: any;
 }>({ mtoOptions: null });
 
-const MasteriyoProvider: React.FC = ({ children }) => {
+const HrtProvider: React.FC = ({ children }) => {
 	const [mtoOptions, setMtoOptions] = useState<any>({});
 	const providerValue = useMemo(
 		() => ({
@@ -16,10 +16,8 @@ const MasteriyoProvider: React.FC = ({ children }) => {
 	);
 
 	return (
-		<MasteriyoContext.Provider value={providerValue}>
-			{children}
-		</MasteriyoContext.Provider>
+		<HrtContext.Provider value={providerValue}>{children}</HrtContext.Provider>
 	);
 };
 
-export default MasteriyoProvider;
+export default HrtProvider;

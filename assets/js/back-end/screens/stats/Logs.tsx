@@ -45,11 +45,11 @@ const Logs: React.FC<Props> = (props) => {
 							<Table size="sm" sx={tableStyles}>
 								<Thead>
 									<Tr>
-										<Th>{__('Title', 'masteriyo')}</Th>
-										<Th>{__('Description', 'masteriyo')}</Th>
-										<Th>{__('Type', 'masteriyo')}</Th>
-										<Th>{__('Author', 'masteriyo')}</Th>
-										<Th>{__('Actions', 'masteriyo')}</Th>
+										<Th>{__('Title', 'hrt')}</Th>
+										<Th>{__('Description', 'hrt')}</Th>
+										<Th>{__('Type', 'hrt')}</Th>
+										<Th>{__('Author', 'hrt')}</Th>
+										<Th>{__('Actions', 'hrt')}</Th>
 									</Tr>
 								</Thead>
 								<Tbody>
@@ -77,18 +77,18 @@ const Logs: React.FC<Props> = (props) => {
 							{__('Deleting Course')} {name}
 						</AlertDialogHeader>
 						<AlertDialogBody>
-							{__("Are you sure? You can't restore this back", 'masteriyo')}
+							{__("Are you sure? You can't restore this back", 'hrt')}
 						</AlertDialogBody>
 						<AlertDialogFooter>
 							<ButtonGroup>
 								<Button onClick={onClose} variant="outline" ref={cancelRef}>
-									{__('Cancel', 'masteriyo')}
+									{__('Cancel', 'hrt')}
 								</Button>
 								{/* <Button
 									colorScheme="red"
 									isLoading={deleteCourse.isLoading}
 									onClick={onDeleteCofirm}>
-									{__('Delete', 'masteriyo')}
+									{__('Delete', 'hrt')}
 								</Button> */}
 							</ButtonGroup>
 						</AlertDialogFooter>

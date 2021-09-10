@@ -52,8 +52,8 @@ const Settings = () => {
 		{
 			onSuccess: () => {
 				toast({
-					title: __('Settings is Updated', 'masteriyo'),
-					description: __('You can keep changing settings', 'masteriyo'),
+					title: __('Settings is Updated', 'hrt'),
+					description: __('You can keep changing settings', 'hrt'),
 					status: 'success',
 					isClosable: true,
 				});
@@ -77,8 +77,8 @@ const Settings = () => {
 						<Box bg="white" p="10" shadow="box">
 							<Tabs>
 								<TabList justifyContent="center" borderBottom="1px">
-									<Tab sx={tabStyles}>{__('Stats', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Developer', 'masteriyo')}</Tab>
+									<Tab sx={tabStyles}>{__('Stats', 'hrt')}</Tab>
+									<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
 								</TabList>
 
 								<form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -95,7 +95,7 @@ const Settings = () => {
 											colorScheme="blue"
 											type="submit"
 											isLoading={updateSettings.isLoading}>
-											{__('Save Settings', 'masteriyo')}
+											{__('Save Settings', 'hrt')}
 										</Button>
 									</ButtonGroup>
 								</form>

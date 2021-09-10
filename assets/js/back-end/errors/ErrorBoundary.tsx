@@ -24,7 +24,7 @@ class ErrorBoundary extends Component<PropsWithChildren<any>, any> {
 					<Box textAlign="center">
 						<Icon as={Five0Five} w="300px" h="180px" />
 						<Heading fontSize="lg" fontWeight="normal">
-							{__('Something went wrong', 'masteriyo')}
+							{__('Something went wrong', 'hrt')}
 						</Heading>
 					</Box>
 				</Center>

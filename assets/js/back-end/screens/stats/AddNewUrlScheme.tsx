@@ -60,7 +60,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 			<Container maxW="container.xl">
 				<Stack direction="column" spacing="8">
 					<Heading as="h1" size="xl">
-						{__('Add New URL Scheme', 'masteriyo')}
+						{__('Add New URL Scheme', 'hrt')}
 					</Heading>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>
 						<Stack
@@ -70,10 +70,10 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 							p="10"
 							shadow="box">
 							<FormControl isInvalid={!!errors?.title}>
-								<FormLabel>{__('Title', 'masteriyo')}</FormLabel>
+								<FormLabel>{__('Title', 'hrt')}</FormLabel>
 								<Input
-									defaultValue={__('Untitled', 'masteriyo')}
-									placeholder={__('Title', 'masteriyo')}
+									defaultValue={__('Untitled', 'hrt')}
+									placeholder={__('Title', 'hrt')}
 									{...register('title')}
 								/>
 								<FormErrorMessage>
@@ -81,11 +81,11 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 								</FormErrorMessage>
 							</FormControl>
 							<FormControl isInvalid={!!errors?.type}>
-								<FormLabel>{__('Type', 'masteriyo')}</FormLabel>
+								<FormLabel>{__('Type', 'hrt')}</FormLabel>
 								<Select
 									defaultValue="regex"
 									{...register('type', {
-										required: __('Please select a type', 'masteriyo'),
+										required: __('Please select a type', 'hrt'),
 									})}>
 									{urlSchemeTypes.map((option) => (
 										<option key={option.value} value={option.value}>
@@ -100,7 +100,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 							<Divider />
 							<ButtonGroup>
 								<Button colorScheme="blue" type="submit">
-									{__('Add', 'masteriyo')}
+									{__('Add', 'hrt')}
 								</Button>
 								<Button
 									variant="outline"
@@ -109,7 +109,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 											pathname: routes.urlSchemes.list,
 										})
 									}>
-									{__('Cancel', 'masteriyo')}
+									{__('Cancel', 'hrt')}
 								</Button>
 							</ButtonGroup>
 						</Stack>

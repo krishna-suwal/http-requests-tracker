@@ -15,6 +15,7 @@
   "autoload": {
     "files": [
       "includes/Helpers/Core.php",
+      "includes/Helpers/Conditional.php",
       "includes/Helpers/UrlSchemeHelpers.php"
     ],
     "psr-4": {

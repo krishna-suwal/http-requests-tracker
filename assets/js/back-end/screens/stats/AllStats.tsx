@@ -76,7 +76,7 @@ const AllStats = () => {
 								});
 							}}>
 							<Icon as={BiBook} sx={iconStyles} />
-							{__('Logs', 'masteriyo')}
+							{__('Logs', 'hrt')}
 						</Tab>
 						<Tab
 							sx={tabStyles}
@@ -87,7 +87,7 @@ const AllStats = () => {
 								});
 							}}>
 							<Icon as={BiEdit} sx={iconStyles} />
-							{__('Graphs', 'masteriyo')}
+							{__('Graphs', 'hrt')}
 						</Tab>
 					</TabList>
 				</Header>
