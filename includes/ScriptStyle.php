@@ -53,6 +53,17 @@ class ScriptStyle {
 		self::$scripts = apply_filters(
 			'hrt_enqueue_scripts',
 			array(
+				'dependencies'   => array(
+					'src'      => self::get_asset_url( "/assets/js/build/hrt-dependencies{$suffix}.js" ),
+					'context'  => array( 'admin', 'public' ),
+					'callback' => 'hrt_is_backend',
+				),
+				'backend'          => array(
+					'src'      => self::get_asset_url( "/assets/js/build/hrt-backend{$suffix}.js" ),
+					'deps'     => array( 'react', 'wp-components', 'wp-element', 'wp-i18n', 'wp-polyfill' ),
+					'context'  => 'admin',
+					'callback' => 'hrt_is_backend',
+				),
 				'timeout-logger' => array(
 					'src'     => self::get_asset_url( "/assets/js/timeout-logger{$suffix}.js" ),
 					'deps'    => array( 'jquery' ),
@@ -85,7 +96,16 @@ class ScriptStyle {
 	public static function localize_admin_scripts() {
 		self::$localized_scripts = apply_filters(
 			'hrt_localized_scripts',
-			array()
+			array(
+				'backend' => array(
+					'name' => '_HRT_',
+					'data' => array(
+						'rootApiUrl' => esc_url_raw( untrailingslashit( rest_url() ) ),
+						'nonce'      => wp_create_nonce( 'wp_rest' ),
+						'home_url'   => home_url(),
+					),
+				),
+			)
 		);
 
 		foreach ( self::$localized_scripts as $handle => $script ) {

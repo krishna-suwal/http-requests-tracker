@@ -48,7 +48,7 @@ Route::editable(
 				'type'       => 'object',
 				'properties' => array(
 					'type' => array(
-						'description' => __( 'Tag ID.', 'masteriyo' ),
+						'description' => __( 'Tag ID.', 'hrt' ),
 						'type'        => 'enum',
 						'context'     => array( 'view', 'edit' ),
 						'enum'        => hrt_get_url_scheme_type_slugs(),
