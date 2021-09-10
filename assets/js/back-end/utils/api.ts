@@ -45,22 +45,6 @@ class API {
 			params: params,
 		}).then((res) => res.data);
 	}
-
-	async start(id: number) {
-		return http({
-			url: this.uri + 'start_quiz',
-			data: { id },
-			method: 'post',
-		}).then((res) => res.data);
-	}
-
-	async check(id: number, data: any) {
-		return http({
-			url: this.uri + 'check_answers',
-			data: { id, data },
-			method: 'post',
-		}).then((res) => res.data);
-	}
 }
 
 export default API;

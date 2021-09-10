@@ -43,7 +43,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 	return (
 		<Stack direction="column" spacing="8" alignItems="center">
 			<Header
-				thirdBtn={{
+				primaryBtn={{
 					label: __('Add URL Scheme', 'masteriyo'),
 					action: () => history.push(routes.urlSchemes.add),
 					icon: <Icon as={BiPlus} fontSize="md" />,
