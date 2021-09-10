@@ -20,14 +20,8 @@ import urls from '../../constants/urls';
 import { SetttingsMap } from '../../types';
 import API from '../../utils/api';
 import { deepClean } from '../../utils/utils';
-import AdvancedSettings from './components/AdvancedSettings';
-import CourseArchiveSettings from './components/CourseArchiveSettings';
-import EmailSetttings from './components/EmailSettings';
-import GeneralSettings from './components/GeneralSettings';
-import LearningPageSettings from './components/LearningPageSettings';
-import PaymentsSettings from './components/PaymentsSettings';
-import QuizSettings from './components/QuizSettings';
-import SingleCourseSettings from './components/SingleCourseSettings';
+import AdvancedSettings from './components/DeveloperSettings';
+import GeneralSettings from './components/StatsSettings';
 
 const Settings = () => {
 	const settingsApi = new API(urls.settings);
@@ -83,53 +77,17 @@ const Settings = () => {
 						<Box bg="white" p="10" shadow="box">
 							<Tabs>
 								<TabList justifyContent="center" borderBottom="1px">
-									<Tab sx={tabStyles}>{__('General', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Course List', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Single Course', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Learning Page', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Payments', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Quiz', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Emails', 'masteriyo')}</Tab>
-									<Tab sx={tabStyles}>{__('Advanced', 'masteriyo')}</Tab>
+									<Tab sx={tabStyles}>{__('Stats', 'masteriyo')}</Tab>
+									<Tab sx={tabStyles}>{__('Developer', 'masteriyo')}</Tab>
 								</TabList>
 
 								<form onSubmit={methods.handleSubmit(onSubmit)}>
 									<TabPanels>
 										<TabPanel sx={tabPanelStyles}>
-											<GeneralSettings
-												generalData={settingsQuery.data?.general}
-											/>
+											<GeneralSettings data={settingsQuery.data?.stats} />
 										</TabPanel>
 										<TabPanel sx={tabPanelStyles}>
-											<CourseArchiveSettings
-												courseArchiveData={settingsQuery.data?.course_archive}
-											/>
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<SingleCourseSettings
-												singleCourseData={settingsQuery.data?.single_course}
-											/>
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<LearningPageSettings
-												learningPageData={settingsQuery.data?.learning_page}
-											/>
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<PaymentsSettings
-												paymentsData={settingsQuery.data?.payments}
-											/>
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<QuizSettings quizData={settingsQuery.data?.quiz} />
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<EmailSetttings emailData={settingsQuery.data?.emails} />
-										</TabPanel>
-										<TabPanel sx={tabPanelStyles}>
-											<AdvancedSettings
-												advanceData={settingsQuery.data?.advance}
-											/>
+											<AdvancedSettings data={settingsQuery.data?.developer} />
 										</TabPanel>
 									</TabPanels>
 									<ButtonGroup>

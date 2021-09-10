@@ -27,7 +27,7 @@ const FourOFour = () => {
 						<Text fontSize="sm" color="gray.500">
 							{__('We can not find the page you are looking for', 'masteriyo')}
 						</Text>
-						<Link to={routes.stats}>
+						<Link to={routes.stats.index}>
 							<Button colorScheme="blue">
 								{__('Back to Stats', 'masteriyo')}
 							</Button>

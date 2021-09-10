@@ -1,7 +1,7 @@
 # Menus heirarchy
 - Stats
 --- Logs
---- Statistics
+--- Statistics/Graphs
 - URL Schemes
 --- List Screen
 --- Edit Screen

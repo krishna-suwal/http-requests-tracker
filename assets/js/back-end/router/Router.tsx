@@ -7,14 +7,14 @@ const Router: React.FC = () => {
 	return (
 		<HashRouter>
 			<Switch>
-				<Route path={routes.stats} exact>
-					<screens.AllCourses />
-				</Route>
-				<Route path={routes.urlSchemes} exact>
-					<screens.AllCourses />
-				</Route>
 				<Route path={routes.settings} exact>
 					<screens.Settings />
+				</Route>
+				<Route path={routes.stats.index} exact>
+					<screens.AllStats />
+				</Route>
+				<Route path={routes.urlSchemes.list}>
+					<screens.AllUrlSchemes />
 				</Route>
 				<Route>
 					<screens.FourOFour />
