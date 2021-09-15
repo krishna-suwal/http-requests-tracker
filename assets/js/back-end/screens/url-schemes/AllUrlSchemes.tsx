@@ -8,7 +8,7 @@ import urls from '../../constants/urls';
 import { useSaver } from '../../hooks/saving-signals';
 import { SetttingsMap, UrlSchemeType } from '../../types';
 import API from '../../utils/api';
-import { updateArrayItemObj } from '../../utils/array';
+import { removeArrayItemObjBy, updateArrayItemObj } from '../../utils/array';
 import useArray from '../../utils/useArray';
 import AddNewUrlScheme from './AddNewUrlScheme';
 import EditUrlScheme from './EditUrlScheme';
@@ -59,6 +59,14 @@ const AllUrlSchemes = () => {
 		});
 		set(newUrlSchemes);
 	};
+	const onRemoveItem = (id: number) => {
+		const newUrlSchemes = removeArrayItemObjBy('id', id, urlSchemes);
+
+		save({
+			'url_schemes.list': newUrlSchemes,
+		});
+		set(newUrlSchemes);
+	};
 
 	if (settingsQuery.isLoading) {
 		return <FullScreenLoader />;
@@ -74,7 +82,7 @@ const AllUrlSchemes = () => {
 					<EditUrlScheme list={urlSchemes} onSubmit={onUpdateUrlScheme} />
 				</Route>
 				<Route>
-					<UrlSchemesList items={urlSchemes} onClickRemoveItem={() => {}} />
+					<UrlSchemesList items={urlSchemes} onClickRemoveItem={onRemoveItem} />
 				</Route>
 			</Switch>
 		</HashRouter>

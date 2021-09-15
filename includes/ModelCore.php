@@ -175,7 +175,7 @@ class ModelCore implements \HRT\Contracts\ModelCore {
 	 * @since 0.1.0
 	 */
 	public function apply_changes() {
-		$this->data    = array_replace_recursive( $this->data, $this->changes );
+		$this->data    = wp_parse_args( $this->changes, $this->data );
 		$this->changes = array();
 	}
 

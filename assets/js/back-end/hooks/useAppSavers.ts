@@ -17,9 +17,8 @@ const useAppSavers = () => {
 		(data: SetttingsMap) => settingsApi.store({ data }),
 		{
 			onSuccess: () => {
-				queryClient.invalidateQueries(`settings`);
 				toast({
-					title: __('Settings updated', 'masteriyo'),
+					title: __('Saved', 'masteriyo'),
 					isClosable: true,
 					status: 'success',
 				});
