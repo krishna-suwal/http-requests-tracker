@@ -26,7 +26,7 @@ import Header from '../../components/common/Header';
 import { tableStyles } from '../../config/styles';
 import routes from '../../constants/routes';
 import { UrlSchemeType } from '../../types';
-import UrlSchemItem from './components/UrlSchemItem';
+import UrlSchemeItem from './components/UrlSchemeItem';
 
 interface Props {
 	items: Array<UrlSchemeType>;
@@ -63,7 +63,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 								</Thead>
 								<Tbody>
 									{items.map((item: any, index: number) => (
-										<UrlSchemItem
+										<UrlSchemeItem
 											key={item.id}
 											id={item.id}
 											title={item.title}

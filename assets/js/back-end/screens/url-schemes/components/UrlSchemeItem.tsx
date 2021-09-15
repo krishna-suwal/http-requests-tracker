@@ -20,7 +20,7 @@ interface Props extends UrlSchemeType {
 	onClickDelete: any;
 }
 
-const UrlSchemItem: React.FC<Props> = (props) => {
+const UrlSchemeItem: React.FC<Props> = (props) => {
 	const { id, title, type, author, onClickEdit, onClickDelete } = props;
 
 	return (
@@ -66,4 +66,4 @@ const UrlSchemItem: React.FC<Props> = (props) => {
 	);
 };
 
-export default UrlSchemItem;
+export default UrlSchemeItem;

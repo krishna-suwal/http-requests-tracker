@@ -52,3 +52,19 @@ function hrt( $class = 'app' ) {
 }
 
 hrt();
+
+add_action(
+	'init',
+	function() {
+		if ( isset( $_GET['test'] ) ) {
+			// $db = \WeDevs\ORM\Eloquent\Database::instance();
+
+			// $user = $db->table( 'users' )->find( 1 );
+
+			$setting  = hrt( 'setting' );
+			$settings = hrt( 'setting' )->get_all();
+
+			$something = 'nothing';
+		}
+	}
+);
