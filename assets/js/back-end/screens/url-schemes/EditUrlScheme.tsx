@@ -57,7 +57,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 		formState: { errors },
 	} = methods;
 	const { urlSchemId }: any = useParams();
-	const data = list.find((item) => item.id === urlSchemId);
+	const data = list.find((item) => item.id + '' === urlSchemId + '');
 	const callSubmit = (newData: {}) => {
 		if (!data) return;
 
