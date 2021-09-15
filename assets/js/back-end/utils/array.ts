@@ -17,3 +17,11 @@ export const updateArrayItemObj = (
 	};
 	return newList;
 };
+
+export const removeArrayItemObjBy = (key: string, value: any, list: any[]) => {
+	return list.filter((item) => item[key] !== value);
+};
+
+export const removeArrayItem = (index: number, list: any[]) => {
+	return list.filter((_, i) => i !== index);
+};

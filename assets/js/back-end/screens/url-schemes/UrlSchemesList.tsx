@@ -19,7 +19,7 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
+import React, { useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/common/Header';
@@ -39,6 +39,18 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 	const cancelRef = React.useRef<any>();
 
 	const { onClose, onOpen, isOpen } = useDisclosure();
+
+	const [deleteItemIndex, setDeleteItemIndex] = useState<number>();
+
+	const onDeletePress = (index: number) => {
+		onOpen();
+		setDeleteItemIndex(index);
+	};
+
+	const onDeleteCofirm = () => {
+		onClickRemoveItem(deleteItemIndex);
+		onClose();
+	};
 
 	return (
 		<Stack direction="column" spacing="8" alignItems="center">
@@ -62,14 +74,14 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 									</Tr>
 								</Thead>
 								<Tbody>
-									{items.map((item: any, index: number) => (
+									{items.map((item: any) => (
 										<UrlSchemeItem
 											key={item.id}
 											id={item.id}
 											title={item.title}
 											type={item.type}
 											author={item.author}
-											onClickDelete={() => onClickRemoveItem(index)}
+											onClickDelete={() => onDeletePress(item.id)}
 											onClickEdit={() => ''}
 										/>
 									))}
@@ -87,7 +99,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 				<AlertDialogOverlay>
 					<AlertDialogContent>
 						<AlertDialogHeader>
-							{__('Deleting Course')} {name}
+							{__('Deleting Url Scheme')} {name}
 						</AlertDialogHeader>
 						<AlertDialogBody>
 							{__("Are you sure? You can't restore this back", 'hrt')}
@@ -97,12 +109,9 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 								<Button onClick={onClose} variant="outline" ref={cancelRef}>
 									{__('Cancel', 'hrt')}
 								</Button>
-								{/* <Button
-									colorScheme="red"
-									isLoading={deleteCourse.isLoading}
-									onClick={onDeleteCofirm}>
+								<Button colorScheme="red" onClick={onDeleteCofirm}>
 									{__('Delete', 'hrt')}
-								</Button> */}
+								</Button>
 							</ButtonGroup>
 						</AlertDialogFooter>
 					</AlertDialogContent>
