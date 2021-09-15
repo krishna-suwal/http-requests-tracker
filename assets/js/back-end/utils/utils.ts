@@ -250,3 +250,13 @@ export const getLocalTime = (date: string) => {
 	const localDate = new Date(formatString);
 	return localDate;
 };
+
+export const prepareSettingData = (data: any) => {
+	const formattedData = {};
+
+	Object.entries(data).forEach(([key, value]) => {
+		key = key.replaceAll('>', '.');
+		formattedData[key] = value;
+	});
+	return deepClean(formattedData);
+};
