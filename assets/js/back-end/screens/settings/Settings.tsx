@@ -9,28 +9,27 @@ import {
 	TabPanel,
 	TabPanels,
 	Tabs,
-	useToast,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import FullScreenLoader from '../../components/layout/FullScreenLoader';
 import urls from '../../constants/urls';
+import { useSaver } from '../../hooks/saving-signals';
 import { SetttingsMap } from '../../types';
 import API from '../../utils/api';
-import { deepClean } from '../../utils/utils';
+import { prepareSettingData } from '../../utils/utils';
 import AdvancedSettings from './components/DeveloperSettings';
 import GeneralSettings from './components/StatsSettings';
 
 const Settings = () => {
+	const { isSaving: isSavingSetting, save } = useSaver('settings');
 	const settingsApi = new API(urls.settings);
 	const methods = useForm<SetttingsMap>({
 		reValidateMode: 'onChange',
 		mode: 'onChange',
 	});
-	const toast = useToast();
-	const queryClient = useQueryClient();
 
 	const tabStyles = {
 		fontWeight: 'medium',
@@ -47,23 +46,9 @@ const Settings = () => {
 		settingsApi.list()
 	);
 
-	const updateSettings = useMutation(
-		(data: SetttingsMap) => settingsApi.store(data),
-		{
-			onSuccess: () => {
-				toast({
-					title: __('Settings is Updated', 'hrt'),
-					description: __('You can keep changing settings', 'hrt'),
-					status: 'success',
-					isClosable: true,
-				});
-				queryClient.invalidateQueries(`settings`);
-			},
-		}
-	);
 	const onSubmit = (data: SetttingsMap) => {
 		try {
-			updateSettings.mutate(deepClean(data));
+			save(prepareSettingData(data));
 		} catch (err) {
 			console.error(err);
 		}
@@ -84,17 +69,17 @@ const Settings = () => {
 								<form onSubmit={methods.handleSubmit(onSubmit)}>
 									<TabPanels>
 										<TabPanel sx={tabPanelStyles}>
-											<GeneralSettings data={settingsQuery.data?.stats} />
+											<GeneralSettings data={settingsQuery.data} />
 										</TabPanel>
 										<TabPanel sx={tabPanelStyles}>
-											<AdvancedSettings data={settingsQuery.data?.developer} />
+											<AdvancedSettings data={settingsQuery.data} />
 										</TabPanel>
 									</TabPanels>
 									<ButtonGroup>
 										<Button
 											colorScheme="blue"
 											type="submit"
-											isLoading={updateSettings.isLoading}>
+											isLoading={isSavingSetting}>
 											{__('Save Settings', 'hrt')}
 										</Button>
 									</ButtonGroup>

@@ -14,15 +14,14 @@ interface LogType {
 }
 
 export interface StatsSettingsType {
-	allow_stats_on_frontend: boolean;
+	'stats.allow_stats_on_frontend': boolean;
 }
 
 export interface DeveloperSettingsType {
-	debug: boolean;
-	template_debug: boolean;
+	'developer.template_debug': boolean;
+	'developer.debug': boolean;
 }
 
-export interface SetttingsMap {
-	stats: StatsSettingsType;
-	developer: DeveloperSettingsType;
+export interface SetttingsMap extends StatsSettingsType, DeveloperSettingsType {
+	'url_schemes.list': UrlSchemeType[];
 }

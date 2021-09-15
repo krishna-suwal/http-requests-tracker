@@ -17,7 +17,7 @@ import { infoIconStyles } from '../../../config/styles';
 import { DeveloperSettingsType } from '../../../types';
 
 interface Props {
-	data?: DeveloperSettingsType;
+	data: DeveloperSettingsType;
 }
 
 const DeveloperSettings: React.FC<Props> = (props) => {
@@ -47,9 +47,12 @@ const DeveloperSettings: React.FC<Props> = (props) => {
 					</FormLabel>
 
 					<Controller
-						name="advance.debug.template_debug"
+						name="developer>template_debug"
 						render={({ field }) => (
-							<Switch {...field} defaultChecked={data?.template_debug} />
+							<Switch
+								{...field}
+								defaultChecked={data['developer.template_debug']}
+							/>
 						)}
 					/>
 				</Stack>
@@ -69,9 +72,9 @@ const DeveloperSettings: React.FC<Props> = (props) => {
 						</Tooltip>
 					</FormLabel>
 					<Controller
-						name="advance.debug.debug"
+						name="developer>debug"
 						render={({ field }) => (
-							<Switch {...field} defaultChecked={data?.debug} />
+							<Switch {...field} defaultChecked={data['developer.debug']} />
 						)}
 					/>
 				</Stack>

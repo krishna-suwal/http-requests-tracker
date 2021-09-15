@@ -15,7 +15,7 @@ import { infoIconStyles } from '../../../config/styles';
 import { StatsSettingsType } from '../../../types';
 
 interface Props {
-	data?: StatsSettingsType;
+	data: StatsSettingsType;
 }
 
 const StatsSettings: React.FC<Props> = (props) => {
@@ -38,11 +38,11 @@ const StatsSettings: React.FC<Props> = (props) => {
 					</FormLabel>
 
 					<Controller
-						name="stats.allow_stats_on_frontend"
+						name="stats>allow_stats_on_frontend"
 						render={({ field }) => (
 							<Switch
 								{...field}
-								defaultChecked={data?.allow_stats_on_frontend}
+								defaultChecked={data['stats.allow_stats_on_frontend']}
 							/>
 						)}
 					/>

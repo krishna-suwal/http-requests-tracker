@@ -2,8 +2,10 @@ import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import HrtProvider from './context/HrtProvider';
+import PassiveSaveProvider from './context/SavingSignalsProvider';
 import ErrorBoundary from './errors/ErrorBoundary';
 import Router from './router/Router';
+import Savers from './Savers';
 import theme from './theme/theme';
 
 const App = () => {
@@ -21,9 +23,12 @@ const App = () => {
 		<ChakraProvider theme={theme}>
 			<ErrorBoundary>
 				<HrtProvider>
-					<QueryClientProvider client={queryClient}>
-						<Router />
-					</QueryClientProvider>
+					<PassiveSaveProvider>
+						<QueryClientProvider client={queryClient}>
+							<Savers />
+							<Router />
+						</QueryClientProvider>
+					</PassiveSaveProvider>
 				</HrtProvider>
 			</ErrorBoundary>
 		</ChakraProvider>
