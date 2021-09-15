@@ -10,6 +10,7 @@ return array_unique(
 		array(
 			'HRT\Providers\AppServiceProvider',
 			'HRT\Providers\UrlSchemesServiceProvider',
+			'HRT\Providers\SettingServiceProvider',
 		)
 	)
 );
