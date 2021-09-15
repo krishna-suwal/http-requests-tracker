@@ -3,6 +3,9 @@ interface UrlSchemeType {
 	title: string;
 	type: string;
 	author?: { id: number; display_name: string; avatar_url: string };
+	url?: string;
+	regex?: string;
+	predefined_type?: string;
 }
 
 interface LogType {

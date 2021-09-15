@@ -17,29 +17,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/common/Header';
 import routes from '../../constants/routes';
-
-const urlSchemeTypes = [
-	{
-		value: 'regex',
-		label: __('Regular Expression', 'hrt'),
-	},
-	{
-		value: 'absolute',
-		label: __('Absolute URL', 'hrt'),
-	},
-	{
-		value: 'relative',
-		label: __('Relative URL', 'hrt'),
-	},
-	{
-		value: 'only_url_args',
-		label: __('Only Url Args', 'hrt'),
-	},
-	{
-		value: 'predefined',
-		label: __('Predefined', 'hrt'),
-	},
-];
+import { predefinedSchemeTypes, urlSchemeTypes } from './data';
 
 interface Props {
 	onSubmit: any;
@@ -52,7 +30,9 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 	const {
 		register,
 		formState: { errors },
+		watch,
 	} = methods;
+	const schemeType = watch('type');
 
 	return (
 		<Stack direction="column" spacing="8" alignItems="center">
@@ -83,7 +63,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 							<FormControl isInvalid={!!errors?.type}>
 								<FormLabel>{__('Type', 'hrt')}</FormLabel>
 								<Select
-									defaultValue="regex"
+									placeholder={__('Please select a type', 'hrt')}
 									{...register('type', {
 										required: __('Please select a type', 'hrt'),
 									})}>
@@ -97,6 +77,48 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 									{errors?.type && errors?.type?.message}
 								</FormErrorMessage>
 							</FormControl>
+							{['absolute', 'relative'].includes(schemeType) && (
+								<FormControl isInvalid={!!errors?.url}>
+									<FormLabel>{__('URL', 'hrt')}</FormLabel>
+									<Input
+										placeholder={__('Absolute URL', 'hrt')}
+										type="url"
+										{...register('url')}
+									/>
+									<FormErrorMessage>
+										{errors?.url && errors?.url?.message}
+									</FormErrorMessage>
+								</FormControl>
+							)}
+							{schemeType === 'regex' && (
+								<FormControl isInvalid={!!errors?.regex}>
+									<FormLabel>{__('Pattern', 'hrt')}</FormLabel>
+									<Input type="regex" {...register('regex')} />
+									<FormErrorMessage>
+										{errors?.regex && errors?.regex?.message}
+									</FormErrorMessage>
+								</FormControl>
+							)}
+							{schemeType === 'predefined' && (
+								<FormControl isInvalid={!!errors?.predefined_type}>
+									<FormLabel>{__('Predefined Type', 'hrt')}</FormLabel>
+									<Select
+										placeholder={__('Please select a type', 'hrt')}
+										{...register('predefined_type', {
+											required: __('Please select a type', 'hrt'),
+										})}>
+										{predefinedSchemeTypes.map((option) => (
+											<option key={option.value} value={option.value}>
+												{option.label}
+											</option>
+										))}
+									</Select>
+									<FormErrorMessage>
+										{errors?.predefined_type &&
+											errors?.predefined_type?.message}
+									</FormErrorMessage>
+								</FormControl>
+							)}
 							<Divider />
 							<ButtonGroup>
 								<Button colorScheme="blue" type="submit">
