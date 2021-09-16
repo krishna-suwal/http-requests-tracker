@@ -9,3 +9,4 @@
 
 require_once __DIR__ . '/SettingsRoutes.php';
 require_once __DIR__ . '/StatsRoutes.php';
+require_once __DIR__ . '/LogsRoutes.php';

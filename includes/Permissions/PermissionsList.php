@@ -20,6 +20,7 @@ class PermissionsList {
 	public static function register_all() {
 		CorePermissions::register_all();
 		StatsApiPermissions::register_all();
+		LogsApiPermissions::register_all();
 		SettingsApiPermissions::register_all();
 	}
 }
