@@ -1,7 +1,7 @@
 import { Box, Skeleton, SkeletonText, Stack, Td, Tr } from '@chakra-ui/react';
 import React from 'react';
 
-export const SkeletonCourseList: React.FC = () => {
+export const SkeletonLogsList: React.FC = () => {
 	const lengths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	return (
 		<>

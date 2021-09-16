@@ -3,6 +3,7 @@ import {
 	Badge,
 	Button,
 	ButtonGroup,
+	Icon,
 	Stack,
 	Td,
 	Text,
@@ -10,8 +11,9 @@ import {
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
-import { BiTrash } from 'react-icons/bi';
+import { BiCalendar, BiTrash } from 'react-icons/bi';
 import { LogType } from '../../../types';
+import { getLocalTime, isEmpty } from '../../../utils/utils';
 
 interface Props {
 	data: LogType;
@@ -20,6 +22,7 @@ interface Props {
 
 const LogItem: React.FC<Props> = (props) => {
 	const { data, onClickDelete } = props;
+	const created_at = getLocalTime(data.created_at);
 
 	return (
 		<Tr>
@@ -33,6 +36,24 @@ const LogItem: React.FC<Props> = (props) => {
 				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
 					{data.type}
 				</Badge>
+			</Td>
+			<Td>
+				{isEmpty(created_at) || 'Invalid Date' === created_at ? (
+					<Text fontSize="xs" fontWeight="medium">
+						—
+					</Text>
+				) : (
+					<Stack
+						direction="row"
+						spacing="2"
+						alignItems="center"
+						color="gray.600">
+						<Icon as={BiCalendar} />
+						<Text fontSize="xs" fontWeight="medium">
+							{created_at}
+						</Text>
+					</Stack>
+				)}
 			</Td>
 			<Td>
 				<Stack direction="row" spacing="2" alignItems="center">
