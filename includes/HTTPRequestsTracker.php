@@ -50,6 +50,8 @@ class HTTPRequestsTracker {
 		// Initilize the hooks.
 		$this->init_hooks();
 
+		Activation::init();
+		Deactivation::init();
 		PermissionsList::register_all();
 		RoutesRegistrar::init();
 		ScriptStyle::init();
@@ -62,7 +64,7 @@ class HTTPRequestsTracker {
 	 * @since 0.1.0
 	 */
 	protected function init_hooks() {
-		add_action( 'init', array( $this, 'init_handler' ), 0 );
+		add_action( 'init', array( $this, 'init_hook_handler' ), 0 );
 
 		add_filter( 'plugin_row_meta', array( $this, 'add_plugin_links' ), 10, 2 );
 		add_filter( 'plugin_action_links_' . Constants::get( 'HRT_PLUGIN_BASENAME' ), array( $this, 'add_plugin_action_links' ) );
@@ -73,7 +75,9 @@ class HTTPRequestsTracker {
 	 *
 	 * @since 0.1.0
 	 */
-	public function init_handler() {
+	public function init_hook_handler() {
+		Install::init();
+
 		$this->load_text_domain();
 	}
 
