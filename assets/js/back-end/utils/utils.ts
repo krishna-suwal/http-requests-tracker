@@ -246,9 +246,13 @@ export const decodeEntity = (html: string) => {
 };
 
 export const getLocalTime = (date: string) => {
+	if (typeof date !== 'string') {
+		return '';
+	}
+
 	const formatString: string = date.replace(' ', 'T') + 'Z';
 	const localDate = new Date(formatString);
-	return localDate;
+	return localDate.toLocaleString();
 };
 
 export const prepareSettingData = (data: any) => {

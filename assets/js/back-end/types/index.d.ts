@@ -14,6 +14,8 @@ interface LogType {
 	description: string;
 	type: string;
 	user?: { id: number; display_name: string; avatar_url: string };
+	data?: any;
+	created_at: string;
 }
 
 export interface StatsSettingsType {
