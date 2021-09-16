@@ -115,3 +115,57 @@ Route::get(
 	}
 )
 ->permission( 'api.logs.read', '<request>' );
+
+/**
+ * Delete logs.
+ *
+ * @since 0.1.0
+ */
+Route::deletable(
+	'logs/(?P<id>[\d]+)',
+	function( $request ) {
+		global $wpdb;
+		$db = \WeDevs\ORM\Eloquent\Database::instance();
+		$id = absint( $request['id'] );
+
+		$object = $db->table( 'hrt_logs' )->where( 'id', '=', $id )->first( array( '*' ) );
+
+		if ( is_null( $object ) ) {
+			return new \WP_Error(
+				'hrt_rest_not_found',
+				__( 'Sorry, the spcefied log does not exist.', 'masteriyo' ),
+				array(
+					'status' => 404,
+				)
+			);
+		}
+
+		$result = $wpdb->delete(
+			$wpdb->prefix . 'hrt_logs',
+			array(
+				'ID' => $id,
+			),
+			array(
+				'%d',
+			)
+		);
+
+		if ( ! $result ) {
+			return new \WP_Error(
+				'hrt_rest_cannot_delete',
+				__( 'Sorry, the spcefied log could not be deleted.', 'masteriyo' )
+			);
+		}
+
+		return $object;
+	}
+)
+->permission( 'api.logs.delete', '<request>' )
+->define_params(
+	array(
+		'id' => array(
+			'type'     => array( 'integer', 'string' ),
+			'required' => true,
+		),
+	)
+);
