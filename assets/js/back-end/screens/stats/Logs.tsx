@@ -20,7 +20,7 @@ import {
 import { useToast } from '@chakra-ui/toast';
 import { __ } from '@wordpress/i18n';
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import Pagination from '../../components/common/Pagination';
 import { tableStyles } from '../../config/styles';
 import urls from '../../constants/urls';
@@ -54,6 +54,8 @@ interface LogsDataType {
 const Logs: React.FC = () => {
 	const [filterParams, setFilterParams] = useState<FilterParams>({});
 	const cancelRef = React.useRef<any>();
+	const [deleteItemId, setDeleteItemId] = useState<number>();
+	const queryClient = useQueryClient();
 
 	const { onClose, onOpen, isOpen } = useDisclosure();
 	const toast = useToast({
@@ -75,6 +77,25 @@ const Logs: React.FC = () => {
 			},
 		}
 	);
+	const deleteLog = useMutation((id: number) => logsApi.delete(id), {
+		onSuccess: () => {
+			queryClient.invalidateQueries('logs');
+			onClose();
+		},
+		onError: (error: any) => {
+			toast({
+				title: __('Failed to delete log', 'masteriyo'),
+				description: `${error.response?.data?.message}`,
+				isClosable: true,
+				status: 'error',
+			});
+			console.error(error);
+		},
+	});
+
+	const onDeleteCofirm = () => {
+		deleteItemId && deleteLog.mutate(deleteItemId);
+	};
 
 	return (
 		<>
@@ -110,7 +131,10 @@ const Logs: React.FC = () => {
 											<LogItem
 												key={item.id}
 												data={item}
-												onClickDelete={() => index}
+												onClickDelete={() => {
+													setDeleteItemId(item.id);
+													onOpen();
+												}}
 											/>
 										))
 									)}
@@ -119,7 +143,7 @@ const Logs: React.FC = () => {
 						</Stack>
 					</Stack>
 				</Box>
-				{logsQuery.isSuccess && logsQuery?.data?.data.length > 0 && (
+				{logsQuery.isSuccess && (
 					<Pagination
 						metaData={logsQuery.data.meta}
 						setFilterParams={setFilterParams}
@@ -135,7 +159,7 @@ const Logs: React.FC = () => {
 				<AlertDialogOverlay>
 					<AlertDialogContent>
 						<AlertDialogHeader>
-							{__('Deleting Course')} {name}
+							{__('Deleting Log')} {name}
 						</AlertDialogHeader>
 						<AlertDialogBody>
 							{__("Are you sure? You can't restore this back", 'hrt')}
@@ -145,12 +169,12 @@ const Logs: React.FC = () => {
 								<Button onClick={onClose} variant="outline" ref={cancelRef}>
 									{__('Cancel', 'hrt')}
 								</Button>
-								{/* <Button
+								<Button
 									colorScheme="red"
-									isLoading={deleteCourse.isLoading}
+									isLoading={deleteLog.isLoading}
 									onClick={onDeleteCofirm}>
 									{__('Delete', 'hrt')}
-								</Button> */}
+								</Button>
 							</ButtonGroup>
 						</AlertDialogFooter>
 					</AlertDialogContent>

@@ -40,15 +40,15 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 
 	const { onClose, onOpen, isOpen } = useDisclosure();
 
-	const [deleteItemIndex, setDeleteItemIndex] = useState<number>();
+	const [deleteItemId, setDeleteItemId] = useState<number>();
 
 	const onDeletePress = (index: number) => {
 		onOpen();
-		setDeleteItemIndex(index);
+		setDeleteItemId(index);
 	};
 
 	const onDeleteCofirm = () => {
-		onClickRemoveItem(deleteItemIndex);
+		onClickRemoveItem(deleteItemId);
 		onClose();
 	};
 
