@@ -35,6 +35,8 @@ class AbsoluteUrlScheme extends UrlScheme {
 	 * @return boolean
 	 */
 	public function match_url( $url ) {
-		return $this->get_url()->equals( new URL( $url ) );
+		$is_matched = $this->get_url()->equals( new URL( $url ) );
+
+		return apply_filters( 'hrt_match_regex', $is_matched, $this );
 	}
 }

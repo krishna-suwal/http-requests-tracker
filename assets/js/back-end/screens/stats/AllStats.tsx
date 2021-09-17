@@ -68,7 +68,7 @@ const AllStats = () => {
 								});
 							}}>
 							<Icon as={BiStats} sx={iconStyles} />
-							{__('Graphs', 'hrt')}
+							{__('Statistics', 'hrt')}
 						</Tab>
 					</TabList>
 				</Header>

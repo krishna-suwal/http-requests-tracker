@@ -14,6 +14,7 @@ import React from 'react';
 import { BiCalendar, BiTrash } from 'react-icons/bi';
 import { LogType } from '../../../types';
 import { getLocalTime, isEmpty } from '../../../utils/utils';
+import { getLogTypeLabel } from '../data';
 
 interface Props {
 	data: LogType;
@@ -30,11 +31,11 @@ const LogItem: React.FC<Props> = (props) => {
 				<Text fontWeight="semibold">{data.title}</Text>
 			</Td>
 			<Td>
-				<Text fontWeight="semibold">{data.description}</Text>
+				<Text>{data.description}</Text>
 			</Td>
 			<Td>
 				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
-					{data.type}
+					{getLogTypeLabel(data)}
 				</Badge>
 			</Td>
 			<Td>

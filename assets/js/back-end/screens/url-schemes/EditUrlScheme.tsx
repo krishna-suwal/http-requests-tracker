@@ -10,6 +10,7 @@ import {
 	Input,
 	Select,
 	Stack,
+	Switch,
 	Text,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
@@ -63,6 +64,14 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								bg="white"
 								p="10"
 								shadow="box">
+								<FormControl display="flex" alignItems="center">
+									<FormLabel mb="0">{__('Enable', 'hrt')}</FormLabel>
+									<Switch
+										defaultChecked={data.enable}
+										{...register('enable')}
+									/>
+								</FormControl>
+
 								<FormControl isInvalid={!!errors?.title}>
 									<FormLabel>{__('Title', 'hrt')}</FormLabel>
 									<Input
@@ -74,6 +83,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 										{errors?.title && errors?.title?.message}
 									</FormErrorMessage>
 								</FormControl>
+
 								<FormControl isInvalid={!!errors?.type}>
 									<FormLabel>{__('Type', 'hrt')}</FormLabel>
 									<Select
@@ -92,13 +102,13 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 										{errors?.type && errors?.type?.message}
 									</FormErrorMessage>
 								</FormControl>
+
 								{['absolute', 'relative'].includes(schemeType) && (
 									<FormControl isInvalid={!!errors?.url}>
 										<FormLabel>{__('URL', 'hrt')}</FormLabel>
 										<Input
 											defaultValue={data?.url}
 											placeholder={__('Absolute URL', 'hrt')}
-											type="url"
 											{...register('url')}
 										/>
 										<FormErrorMessage>
@@ -106,6 +116,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 										</FormErrorMessage>
 									</FormControl>
 								)}
+
 								{schemeType === 'regex' && (
 									<FormControl isInvalid={!!errors?.regex}>
 										<FormLabel>{__('Pattern', 'hrt')}</FormLabel>
@@ -119,6 +130,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 										</FormErrorMessage>
 									</FormControl>
 								)}
+
 								{schemeType === 'predefined' && (
 									<FormControl isInvalid={!!errors?.predefined_type}>
 										<FormLabel>{__('Predefined Type', 'hrt')}</FormLabel>
@@ -140,6 +152,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 										</FormErrorMessage>
 									</FormControl>
 								)}
+
 								<Divider />
 								<ButtonGroup>
 									<Button colorScheme="blue" type="submit">

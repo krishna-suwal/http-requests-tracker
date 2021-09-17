@@ -1,6 +1,8 @@
 import { __ } from '@wordpress/i18n';
+import { LogType } from '../../types';
+import { isEmpty } from '../../utils/utils';
 
-export const logTypes = [
+export const logFilterTypes = [
 	{
 		value: 'regex',
 		label: __('Regular Expression', 'hrt'),
@@ -17,24 +19,32 @@ export const logTypes = [
 		value: 'predefined.ajax',
 		label: __('Ajax Requests', 'hrt'),
 	},
+];
+
+export const logTypeLabels = [
 	{
-		value: 'predefined.search_query',
-		label: __('Search Query', 'hrt'),
+		value: 'regex',
+		label: __('RegExp', 'hrt'),
 	},
 	{
-		value: 'predefined.front_page_query',
-		label: __('Front Page Query', 'hrt'),
+		value: 'absolute',
+		label: __('Absolute URL', 'hrt'),
 	},
 	{
-		value: 'predefined.blog_homepage_query',
-		label: __('Blog Homepage Query', 'hrt'),
+		value: 'relative',
+		label: __('Relative URL', 'hrt'),
 	},
 	{
-		value: 'predefined.feed_query',
-		label: __('Feed Query', 'hrt'),
-	},
-	{
-		value: 'predefined.heartbeat',
-		label: __('Heartbeats', 'hrt'),
+		value: 'predefined.ajax',
+		label: __('Ajax', 'hrt'),
 	},
 ];
+
+export const getLogTypeLabel = (log: LogType) => {
+	let label: any = logTypeLabels.find((item) => item.value === log.type)?.label;
+
+	if (isEmpty(label)) {
+		label = log.type;
+	}
+	return label;
+};

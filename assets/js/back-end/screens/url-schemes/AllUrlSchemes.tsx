@@ -48,6 +48,21 @@ const AllUrlSchemes = () => {
 			pathname: routes.urlSchemes.list,
 		});
 	};
+	const onChangeEnable = (id: string, isChecked: boolean) => {
+		const newUrlSchemes = updateArrayItemObj(
+			'id',
+			id,
+			{
+				enable: isChecked,
+			},
+			urlSchemes
+		);
+
+		save({
+			'url_schemes.list': newUrlSchemes,
+		});
+		set(newUrlSchemes);
+	};
 	const onUpdateUrlScheme = (data: UrlSchemeType) => {
 		const newUrlSchemes = updateArrayItemObj('id', data.id, data, urlSchemes);
 
@@ -82,7 +97,11 @@ const AllUrlSchemes = () => {
 					<EditUrlScheme list={urlSchemes} onSubmit={onUpdateUrlScheme} />
 				</Route>
 				<Route>
-					<UrlSchemesList items={urlSchemes} onClickRemoveItem={onRemoveItem} />
+					<UrlSchemesList
+						items={urlSchemes}
+						onClickRemoveItem={onRemoveItem}
+						onChangeEnable={onChangeEnable}
+					/>
 				</Route>
 			</Switch>
 		</HashRouter>
