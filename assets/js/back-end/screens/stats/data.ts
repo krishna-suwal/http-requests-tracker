@@ -1,5 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import { LogType } from '../../types';
 import { isEmpty } from '../../utils/utils';
 
 export const logFilterTypes = [
@@ -40,11 +39,11 @@ export const logTypeLabels = [
 	},
 ];
 
-export const getLogTypeLabel = (log: LogType) => {
-	let label: any = logTypeLabels.find((item) => item.value === log.type)?.label;
+export const getLogTypeLabel = (logType: string) => {
+	let label: any = logTypeLabels.find((item) => item.value === logType)?.label;
 
 	if (isEmpty(label)) {
-		label = log.type;
+		label = logType;
 	}
 	return label;
 };
