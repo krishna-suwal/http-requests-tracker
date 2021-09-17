@@ -50,6 +50,7 @@ class HTTPRequestsTracker {
 		// Initilize the hooks.
 		$this->init_hooks();
 
+		DBLogger::init();
 		Activation::init();
 		Deactivation::init();
 		PermissionsList::register_all();

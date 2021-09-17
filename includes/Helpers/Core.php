@@ -17,12 +17,10 @@ function hrt_get_current_request_url() {
  *
  * @since 0.1.0
  *
- * @param array $url_scheme_list
- *
  * @return boolean
  */
-function hrt_is_log_current_url( $url_scheme_list ) {
-	return hrt_is_log_url( hrt_get_current_request_url(), $url_scheme_list );
+function hrt_is_log_current_request() {
+	return hrt_is_log_request( hrt_get_current_request_url() );
 }
 
 /**
@@ -31,15 +29,28 @@ function hrt_is_log_current_url( $url_scheme_list ) {
  * @since 0.1.0
  *
  * @param string $url
- * @param array $url_scheme_list
  *
  * @return boolean
  */
-function hrt_is_log_url( $url, $url_scheme_list ) {
+function hrt_is_log_request( $url ) {
+	$url_scheme_list = hrt( 'setting' )->get( 'url_schemes.list' );
+
 	foreach ( $url_scheme_list as $url_scheme ) {
+		if ( isset( $url_scheme['enable'] ) && true !== $url_scheme['enable'] ) {
+			continue;
+		}
 		if ( hrt_match_url_scheme( $url, $url_scheme ) ) {
-			return true;
+			return array(
+				'is_log' => true,
+				'scheme' => $url_scheme,
+				'url'    => $url,
+			);
 		}
 	}
-	return false;
+
+	return array(
+		'is_log' => false,
+		'scheme' => null,
+		'url'    => null,
+	);
 }

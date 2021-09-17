@@ -1,4 +1,5 @@
 interface UrlSchemeType {
+	enable: boolean;
 	id: number | string;
 	title: string;
 	type: string;

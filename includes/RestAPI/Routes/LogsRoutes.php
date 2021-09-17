@@ -75,7 +75,7 @@ Route::get(
 					'avatar_url'   => '',
 				);
 
-				if ( ! is_wp_error( $user ) ) {
+				if ( $user && ! is_wp_error( $user ) ) {
 					$user_data = array(
 						'id'           => $user->ID,
 						'display_name' => $user->display_name,

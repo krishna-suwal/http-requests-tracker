@@ -26,15 +26,17 @@ import Header from '../../components/common/Header';
 import { tableStyles } from '../../config/styles';
 import routes from '../../constants/routes';
 import { UrlSchemeType } from '../../types';
+import EmptyInfo from './components/EmptyInfo';
 import UrlSchemeItem from './components/UrlSchemeItem';
 
 interface Props {
 	items: Array<UrlSchemeType>;
 	onClickRemoveItem: Function;
+	onChangeEnable: any;
 }
 
 const UrlSchemesList: React.FC<Props> = (props) => {
-	const { items, onClickRemoveItem } = props;
+	const { items, onClickRemoveItem, onChangeEnable } = props;
 	const history = useHistory();
 	const cancelRef = React.useRef<any>();
 
@@ -67,24 +69,29 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 							<Table size="sm" sx={tableStyles}>
 								<Thead>
 									<Tr>
+										<Th></Th>
 										<Th>{__('Title', 'hrt')}</Th>
 										<Th>{__('Type', 'hrt')}</Th>
+										<Th></Th>
 										<Th>{__('Author', 'hrt')}</Th>
 										<Th>{__('Actions', 'hrt')}</Th>
 									</Tr>
 								</Thead>
 								<Tbody>
-									{items.map((item: any) => (
-										<UrlSchemeItem
-											key={item.id}
-											id={item.id}
-											title={item.title}
-											type={item.type}
-											author={item.author}
-											onClickDelete={() => onDeletePress(item.id)}
-											onClickEdit={() => ''}
-										/>
-									))}
+									{items.length === 0 ? (
+										<EmptyInfo message={__('Nothing found.', 'hrt')} />
+									) : (
+										items.map((item: any) => (
+											<UrlSchemeItem
+												key={item.id}
+												data={item}
+												onClickDelete={() => onDeletePress(item.id)}
+												onChangeEnable={(isChecked: boolean) =>
+													onChangeEnable(item.id, isChecked)
+												}
+											/>
+										))
+									)}
 								</Tbody>
 							</Table>
 						</Stack>

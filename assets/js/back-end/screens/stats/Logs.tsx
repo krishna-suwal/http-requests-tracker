@@ -118,26 +118,27 @@ const Logs: React.FC = () => {
 										<Th>{__('Description', 'hrt')}</Th>
 										<Th>{__('Type', 'hrt')}</Th>
 										<Th>{__('Date', 'masteriyo')}</Th>
-										<Th>{__('Author', 'hrt')}</Th>
+										<Th>{__('User', 'hrt')}</Th>
 										<Th>{__('Actions', 'hrt')}</Th>
 									</Tr>
 								</Thead>
 								<Tbody>
 									{logsQuery.isLoading && <SkeletonLogsList />}
-									{logsQuery.isSuccess && logsQuery?.data?.data.length === 0 ? (
-										<EmptyInfo message={__('No logs found.', 'hrt')} />
-									) : (
-										logsQuery.data?.data?.map((item: any, index: number) => (
-											<LogItem
-												key={item.id}
-												data={item}
-												onClickDelete={() => {
-													setDeleteItemId(item.id);
-													onOpen();
-												}}
-											/>
-										))
-									)}
+									{logsQuery.isSuccess &&
+										(logsQuery?.data?.data.length === 0 ? (
+											<EmptyInfo message={__('No logs found.', 'hrt')} />
+										) : (
+											logsQuery.data?.data?.map((item: any, index: number) => (
+												<LogItem
+													key={item.id}
+													data={item}
+													onClickDelete={() => {
+														setDeleteItemId(item.id);
+														onOpen();
+													}}
+												/>
+											))
+										))}
 								</Tbody>
 							</Table>
 						</Stack>

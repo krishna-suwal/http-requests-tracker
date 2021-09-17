@@ -4,6 +4,7 @@ import {
 	Button,
 	ButtonGroup,
 	Stack,
+	Switch,
 	Td,
 	Text,
 	Tr,
@@ -14,42 +15,62 @@ import { BiEdit, BiTrash } from 'react-icons/bi';
 import { Link as RouterLink } from 'react-router-dom';
 import routes from '../../../constants/routes';
 import { UrlSchemeType } from '../../../types';
+import { getSchemeTypeLabel } from '../data';
 
-interface Props extends UrlSchemeType {
-	onClickEdit: any;
+const getExtraData = (scheme: UrlSchemeType) => {
+	if ('regex' === scheme.type) {
+		return scheme.regex;
+	}
+	if ('absolute' === scheme.type || 'relative' === scheme.type) {
+		return scheme.url;
+	}
+	return '—';
+};
+
+interface Props {
+	data: UrlSchemeType;
 	onClickDelete: any;
+	onChangeEnable: any;
 }
 
 const UrlSchemeItem: React.FC<Props> = (props) => {
-	const { id, title, type, author, onClickEdit, onClickDelete } = props;
+	const { data, onClickDelete, onChangeEnable } = props;
 
 	return (
 		<Tr>
 			<Td>
-				<Text fontWeight="semibold">{title}</Text>
+				<Switch
+					defaultChecked={data.enable}
+					onChange={(e) => onChangeEnable(e.target.checked)}
+				/>
+			</Td>
+			<Td>
+				<Text>{data.title}</Text>
 			</Td>
 			<Td>
 				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
-					{type}
+					{getSchemeTypeLabel(data)}
 				</Badge>
 			</Td>
 			<Td>
+				<Text>{getExtraData(data)}</Text>
+			</Td>
+			<Td>
 				<Stack direction="row" spacing="2" alignItems="center">
-					<Avatar src={author?.avatar_url} size="xs" />
+					<Avatar src={data.author?.avatar_url} size="xs" />
 					<Text fontSize="xs" fontWeight="medium" color="gray.600">
-						{author?.display_name}
+						{data.author?.display_name}
 					</Text>
 				</Stack>
 			</Td>
 			<Td>
 				<ButtonGroup>
 					<RouterLink
-						to={routes.urlSchemes.edit.replace(':urlSchemId', id.toString())}>
-						<Button
-							leftIcon={<BiEdit />}
-							colorScheme="blue"
-							size="xs"
-							onClick={onClickEdit}>
+						to={routes.urlSchemes.edit.replace(
+							':urlSchemId',
+							data.id.toString()
+						)}>
+						<Button leftIcon={<BiEdit />} colorScheme="blue" size="xs">
 							{__('Edit')}
 						</Button>
 					</RouterLink>

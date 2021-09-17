@@ -13,7 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { deepClean } from '../../../utils/utils';
-import { logTypes } from '../data';
+import { logFilterTypes } from '../data';
 
 interface FilterParams {
 	type?: string;
@@ -66,7 +66,7 @@ const LogsFilter: React.FC<Props> = (props) => {
 							{...register('type')}
 							defaultValue={filterParams?.type}
 							placeholder={__('All Types', 'masteriyo')}>
-							{logTypes.map((option: any) => (
+							{logFilterTypes.map((option: any) => (
 								<option key={option.value} value={option.value}>
 									{option.label}
 								</option>
