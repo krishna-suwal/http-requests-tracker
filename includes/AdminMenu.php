@@ -62,8 +62,8 @@ class AdminMenu {
 
 		add_submenu_page(
 			'hrt',
-			esc_html__( 'URL Schemes', 'hrt' ),
-			esc_html__( 'URL Schemes', 'hrt' ),
+			esc_html__( 'Schemes', 'hrt' ),
+			esc_html__( 'Schemes', 'hrt' ),
 			'manage_options',
 			'hrt#/schemes',
 			array( __CLASS__, 'display_main_page' )

@@ -41,7 +41,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 			<Container maxW="container.xl">
 				<Stack direction="column" spacing="8">
 					<Heading as="h1" size="xl">
-						{__('Add New URL Scheme', 'hrt')}
+						{__('Add New Scheme', 'hrt')}
 					</Heading>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>
 						<Stack

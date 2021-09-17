@@ -54,7 +54,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 			<Container maxW="container.xl">
 				<Stack direction="column" spacing="8">
 					<Heading as="h1" size="xl">
-						{__('Edit URL Scheme', 'hrt')}
+						{__('Edit Scheme', 'hrt')}
 					</Heading>
 					{data && (
 						<form onSubmit={methods.handleSubmit(callSubmit)}>

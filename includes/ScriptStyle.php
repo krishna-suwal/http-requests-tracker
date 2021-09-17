@@ -101,7 +101,7 @@ class ScriptStyle {
 		);
 
 		if ( is_user_logged_in() ) {
-			$user         = get_current_user();
+			$user         = wp_get_current_user();
 			$current_user = array(
 				'id'           => $user->ID,
 				'display_name' => $user->display_name,

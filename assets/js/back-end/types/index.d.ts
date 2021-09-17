@@ -46,5 +46,5 @@ export interface DeveloperSettingsType {
 }
 
 export interface SetttingsMap extends StatsSettingsType, DeveloperSettingsType {
-	'url_schemes.list': UrlSchemeType[];
+	'schemes.list': UrlSchemeType[];
 }

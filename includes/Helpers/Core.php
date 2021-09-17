@@ -33,16 +33,16 @@ function hrt_is_log_current_request() {
  * @return boolean
  */
 function hrt_is_log_request( $url ) {
-	$url_scheme_list = hrt( 'setting' )->get( 'url_schemes.list' );
+	$scheme_list = hrt( 'setting' )->get( 'schemes.list' );
 
-	foreach ( $url_scheme_list as $url_scheme ) {
-		if ( isset( $url_scheme['enable'] ) && true !== $url_scheme['enable'] ) {
+	foreach ( $scheme_list as $scheme ) {
+		if ( isset( $scheme['enable'] ) && true !== $scheme['enable'] ) {
 			continue;
 		}
-		if ( hrt_match_url_scheme( $url, $url_scheme ) ) {
+		if ( hrt_match_scheme( $url, $scheme ) ) {
 			return array(
 				'is_log' => true,
-				'scheme' => $url_scheme,
+				'scheme' => $scheme,
 				'url'    => $url,
 			);
 		}
