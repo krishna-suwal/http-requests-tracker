@@ -1,4 +1,6 @@
 import {
+	Alert,
+	AlertIcon,
 	Button,
 	ButtonGroup,
 	Container,
@@ -11,7 +13,7 @@ import {
 	Select,
 	Stack,
 	Switch,
-	Text,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
@@ -29,6 +31,7 @@ interface Props {
 
 const EditUrlScheme: React.FC<Props> = (props) => {
 	const { list, onSubmit } = props;
+	const borderColor = useColorModeValue('gray.100', 'gray.700');
 	const history = useHistory();
 	const methods = useForm();
 	const {
@@ -49,24 +52,31 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 	const schemeType = watch('type', data?.type);
 
 	return (
-		<Stack direction="column" spacing="8" alignItems="center">
+		<Stack direction="column" spacing="6" alignItems="center">
 			<Header>
 				<Heading fontSize="md" fontWeight="bold" color="gray.500">
 					{__('Edit Scheme', 'hrt')}
 				</Heading>
 			</Header>
 			<Container maxW="container.xl">
-				{data && (
+				{data ? (
 					<form onSubmit={methods.handleSubmit(callSubmit)}>
 						<Stack
 							direction="column"
 							spacing="8"
-							bg="white"
-							p="10"
-							shadow="box">
+							border="1px"
+							borderColor={borderColor}
+							borderRadius="md"
+							p="8">
 							<FormControl display="flex" alignItems="center">
-								<FormLabel mb="0">{__('Enable', 'hrt')}</FormLabel>
-								<Switch defaultChecked={data.enable} {...register('enable')} />
+								<FormLabel mb="0" minW="xs">
+									{__('Enable', 'hrt')}
+								</FormLabel>
+								<Switch
+									colorScheme="green"
+									defaultChecked={data.enable}
+									{...register('enable')}
+								/>
 							</FormControl>
 
 							<FormControl isInvalid={!!errors?.title}>
@@ -152,11 +162,16 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 
 							<Divider />
 							<ButtonGroup>
-								<Button colorScheme="green" type="submit">
+								<Button
+									colorScheme="green"
+									type="submit"
+									borderRadius="3xl"
+									px="6">
 									{__('Update', 'hrt')}
 								</Button>
 								<Button
 									variant="outline"
+									borderRadius="3xl"
 									onClick={() =>
 										history.push({
 											pathname: routes.urlSchemes.list,
@@ -167,11 +182,27 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 							</ButtonGroup>
 						</Stack>
 					</form>
-				)}
-				{!data && (
-					<Text fontSize="xs" fontWeight="medium" color="gray.600">
-						{__('Data not found!', 'hrt')}
-					</Text>
+				) : (
+					<Stack direction="column" spacing="8" bg="white" p="10" shadow="box">
+						<Alert status="error">
+							<AlertIcon />
+							{__('Scheme not found!', 'hrt')}
+						</Alert>
+
+						<Divider />
+
+						<ButtonGroup>
+							<Button
+								variant="outline"
+								onClick={() =>
+									history.push({
+										pathname: routes.urlSchemes.list,
+									})
+								}>
+								{__('Go Back', 'hrt')}
+							</Button>
+						</ButtonGroup>
+					</Stack>
 				)}
 			</Container>
 		</Stack>

@@ -107,7 +107,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 				isCentered
 				leastDestructiveRef={cancelRef}>
 				<AlertDialogOverlay>
-					<AlertDialogContent>
+					<AlertDialogContent borderRadius="0">
 						<AlertDialogHeader>
 							{__('Deleting Scheme')} {name}
 						</AlertDialogHeader>

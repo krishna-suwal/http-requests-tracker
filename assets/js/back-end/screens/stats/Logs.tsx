@@ -156,7 +156,7 @@ const Logs: React.FC = () => {
 				isCentered
 				leastDestructiveRef={cancelRef}>
 				<AlertDialogOverlay>
-					<AlertDialogContent>
+					<AlertDialogContent borderRadius="0">
 						<AlertDialogHeader>
 							{__('Deleting Log')} {name}
 						</AlertDialogHeader>

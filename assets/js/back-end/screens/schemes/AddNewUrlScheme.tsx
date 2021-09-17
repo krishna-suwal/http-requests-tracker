@@ -11,6 +11,7 @@ import {
 	Select,
 	Stack,
 	Switch,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
@@ -26,6 +27,7 @@ interface Props {
 
 const AddNewUrlScheme: React.FC<Props> = (props) => {
 	const { onSubmit } = props;
+	const borderColor = useColorModeValue('gray.100', 'gray.700');
 	const history = useHistory();
 	const methods = useForm();
 	const {
@@ -36,7 +38,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 	const schemeType = watch('type');
 
 	return (
-		<Stack direction="column" spacing="8" alignItems="center">
+		<Stack direction="column" spacing="6" alignItems="center">
 			<Header>
 				<Heading fontSize="md" fontWeight="bold" color="gray.500">
 					{__('Add Scheme', 'hrt')}
@@ -44,10 +46,22 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 			</Header>
 			<Container maxW="container.xl">
 				<form onSubmit={methods.handleSubmit(onSubmit)}>
-					<Stack direction="column" spacing="8" bg="white" p="10" shadow="box">
+					<Stack
+						direction="column"
+						spacing="8"
+						border="1px"
+						borderColor={borderColor}
+						borderRadius="md"
+						p="8">
 						<FormControl display="flex" alignItems="center">
-							<FormLabel mb="0">{__('Enable', 'hrt')}</FormLabel>
-							<Switch defaultChecked={true} {...register('enable')} />
+							<FormLabel mb="0" minW="xs">
+								{__('Enable', 'hrt')}
+							</FormLabel>
+							<Switch
+								colorScheme="green"
+								defaultChecked={true}
+								{...register('enable')}
+							/>
 						</FormControl>
 
 						<FormControl isInvalid={!!errors?.title}>
@@ -56,6 +70,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 								defaultValue={__('Untitled', 'hrt')}
 								placeholder={__('Title', 'hrt')}
 								{...register('title')}
+								borderBottom="none"
 							/>
 							<FormErrorMessage>
 								{errors?.title && errors?.title?.message}
@@ -125,11 +140,16 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 
 						<Divider />
 						<ButtonGroup>
-							<Button colorScheme="green" type="submit">
+							<Button
+								colorScheme="green"
+								type="submit"
+								borderRadius="3xl"
+								px="6">
 								{__('Add', 'hrt')}
 							</Button>
 							<Button
 								variant="outline"
+								borderRadius="3xl"
 								onClick={() =>
 									history.push({
 										pathname: routes.urlSchemes.list,
