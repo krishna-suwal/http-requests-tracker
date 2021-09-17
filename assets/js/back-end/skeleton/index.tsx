@@ -1,4 +1,4 @@
-import { SkeletonText, Td, Tr } from '@chakra-ui/react';
+import { Skeleton, SkeletonText, Stack, Td, Tr } from '@chakra-ui/react';
 import React from 'react';
 
 export const SkeletonLogsList: React.FC = () => {
@@ -57,5 +57,14 @@ export const SkeletonStatistics: React.FC = () => {
 				</Tr>
 			))}
 		</>
+	);
+};
+
+export const SkeletonSettings: React.FC = () => {
+	return (
+		<Stack spacing="4" w="full">
+			<Skeleton h="6" w="full" />
+			<Skeleton h="6" w="full" />
+		</Stack>
 	);
 };

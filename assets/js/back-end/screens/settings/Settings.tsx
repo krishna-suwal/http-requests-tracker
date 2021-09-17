@@ -13,9 +13,9 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import Header from '../../components/common/Header';
-import FullScreenLoader from '../../components/layout/FullScreenLoader';
 import urls from '../../constants/urls';
 import { useSaver } from '../../hooks/saving-signals';
+import { SkeletonSettings } from '../../skeleton';
 import { SetttingsMap } from '../../types';
 import API from '../../utils/api';
 import { prepareSettingData } from '../../utils/utils';
@@ -53,40 +53,50 @@ const Settings = () => {
 		}
 	};
 
-	if (settingsQuery.isSuccess) {
-		return (
-			<Tabs colorScheme="green">
-				<FormProvider {...methods}>
-					<Header
-						primaryBtn={{
-							label: __('Update Settings', 'hrt'),
-							action: methods.handleSubmit(onSubmit),
-							isLoading: isSavingSetting,
-						}}>
-						<TabList borderBottom="none">
-							<Tab sx={tabStyles}>{__('Stats', 'hrt')}</Tab>
-							<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
-						</TabList>
-					</Header>
-					<Container maxW="container.xl" pt="5">
-						<Box border="1px" borderColor={borderColor} borderRadius="md" p="8">
-							<form onSubmit={methods.handleSubmit(onSubmit)}>
-								<TabPanels>
-									<TabPanel sx={tabPanelStyles}>
-										<GeneralSettings data={settingsQuery.data} />
-									</TabPanel>
-									<TabPanel sx={tabPanelStyles}>
-										<AdvancedSettings data={settingsQuery.data} />
-									</TabPanel>
-								</TabPanels>
-							</form>
-						</Box>
-					</Container>
-				</FormProvider>
-			</Tabs>
-		);
-	}
-	return <FullScreenLoader />;
+	return (
+		<Tabs colorScheme="green">
+			<FormProvider {...methods}>
+				<Header
+					primaryBtn={{
+						label: __('Update Settings', 'hrt'),
+						action: methods.handleSubmit(onSubmit),
+						isLoading: isSavingSetting,
+						isDisabled: settingsQuery.isLoading || !settingsQuery.isSuccess,
+					}}>
+					<TabList borderBottom="none">
+						<Tab sx={tabStyles}>{__('Stats', 'hrt')}</Tab>
+						<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
+					</TabList>
+				</Header>
+				<Container maxW="container.xl" pt="5">
+					<Box border="1px" borderColor={borderColor} borderRadius="md" p="8">
+						<form onSubmit={methods.handleSubmit(onSubmit)}>
+							<TabPanels>
+								<TabPanel sx={tabPanelStyles}>
+									{settingsQuery.isLoading ? (
+										<SkeletonSettings />
+									) : (
+										settingsQuery.data && (
+											<GeneralSettings data={settingsQuery.data} />
+										)
+									)}
+								</TabPanel>
+								<TabPanel sx={tabPanelStyles}>
+									{settingsQuery.isLoading ? (
+										<SkeletonSettings />
+									) : (
+										settingsQuery.data && (
+											<AdvancedSettings data={settingsQuery.data} />
+										)
+									)}
+								</TabPanel>
+							</TabPanels>
+						</form>
+					</Box>
+				</Container>
+			</FormProvider>
+		</Tabs>
+	);
 };
 
 export default Settings;
