@@ -32,8 +32,8 @@ const AllUrlSchemes = () => {
 		() => settingsApi.list(),
 		{
 			onSuccess: function (data) {
-				set(data['url_schemes.list']);
-				cache.set('schemes', data['url_schemes.list']);
+				set(data['schemes.list']);
+				cache.set('schemes', data['schemes.list']);
 			},
 		}
 	);
@@ -43,7 +43,7 @@ const AllUrlSchemes = () => {
 
 		set(newList);
 		save({
-			'url_schemes.list': newList,
+			'schemes.list': newList,
 		});
 		cache.set('schemes', newList);
 		history.push({
@@ -61,7 +61,7 @@ const AllUrlSchemes = () => {
 		);
 
 		save({
-			'url_schemes.list': newUrlSchemes,
+			'schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
 		cache.set('schemes', newUrlSchemes);
@@ -73,7 +73,7 @@ const AllUrlSchemes = () => {
 			pathname: routes.urlSchemes.list,
 		});
 		save({
-			'url_schemes.list': newUrlSchemes,
+			'schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
 		cache.set('schemes', newUrlSchemes);
@@ -82,7 +82,7 @@ const AllUrlSchemes = () => {
 		const newUrlSchemes = removeArrayItemObjBy('id', id, urlSchemes);
 
 		save({
-			'url_schemes.list': newUrlSchemes,
+			'schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
 		cache.set('schemes', newUrlSchemes);

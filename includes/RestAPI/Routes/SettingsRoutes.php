@@ -51,7 +51,7 @@ Route::editable(
 					'type'    => 'boolean',
 					'context' => array( 'view', 'edit' ),
 				),
-				'url_schemes.list'              => array(
+				'schemes.list'                  => array(
 					'type'    => 'array',
 					'context' => array( 'view', 'edit' ),
 				),

@@ -3,11 +3,11 @@
 use HRT\UrlSchemes\AbsoluteUrlScheme;
 use HRT\UrlSchemes\UrlScheme;
 
-class UrlSchemeHelpersTest extends WP_UnitTestCase {
-	public function test_hrt_prepare_url_scheme() {
-		$this->assertTrue( function_exists( 'hrt_prepare_url_scheme' ) );
+class UrlSchemeHelpersTest extends \WP_UnitTestCase {
+	public function test_hrt_prepare_scheme() {
+		$this->assertTrue( function_exists( 'hrt_prepare_scheme' ) );
 
-		$scheme = hrt_prepare_url_scheme(
+		$scheme = hrt_prepare_scheme(
 			array(
 				'type' => 'absolute',
 				'url'  => 'example.com/?test',
@@ -19,10 +19,10 @@ class UrlSchemeHelpersTest extends WP_UnitTestCase {
 		$this->assertEquals( 'example.com/?test', $scheme->get( 'url' ) );
 	}
 
-	public function test_hrt_match_url_scheme() {
-		$this->assertTrue( function_exists( 'hrt_match_url_scheme' ) );
+	public function test_hrt_match_scheme() {
+		$this->assertTrue( function_exists( 'hrt_match_scheme' ) );
 		$this->assertTrue(
-			hrt_match_url_scheme(
+			hrt_match_scheme(
 				'example.com/?test',
 				array(
 					'type' => 'absolute',
@@ -31,7 +31,7 @@ class UrlSchemeHelpersTest extends WP_UnitTestCase {
 			)
 		);
 		$this->assertFalse(
-			hrt_match_url_scheme(
+			hrt_match_scheme(
 				'example.com/?test',
 				array(
 					'type' => 'absolute',

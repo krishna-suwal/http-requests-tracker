@@ -58,7 +58,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 		<Stack direction="column" spacing="8" alignItems="center">
 			<Header
 				primaryBtn={{
-					label: __('Add URL Scheme', 'hrt'),
+					label: __('Add Scheme', 'hrt'),
 					action: () => history.push(routes.urlSchemes.add),
 					icon: <Icon as={BiPlus} fontSize="md" />,
 				}}></Header>
@@ -106,7 +106,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 				<AlertDialogOverlay>
 					<AlertDialogContent>
 						<AlertDialogHeader>
-							{__('Deleting Url Scheme')} {name}
+							{__('Deleting Scheme')} {name}
 						</AlertDialogHeader>
 						<AlertDialogBody>
 							{__("Are you sure? You can't restore this back", 'hrt')}

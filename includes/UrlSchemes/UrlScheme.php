@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 abstract class UrlScheme {
 	/**
-	 * Url Scheme Data.
+	 * Scheme Data.
 	 *
 	 * @since 0.1.0
 	 *

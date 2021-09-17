@@ -50,7 +50,7 @@ class Setting extends ModelCore {
 	protected $default_data = array(
 		'stats.allow_stats_on_frontend' => true,
 
-		'url_schemes.list'              => array(),
+		'schemes.list'                  => array(),
 
 		'developer.template_debug'      => true,
 		'developer.debug'               => true,
@@ -112,11 +112,11 @@ class Setting extends ModelCore {
 	public function get_all() {
 		$data = $this->get_data();
 
-		if ( ! isset( $data['url_schemes.list'] ) || ! is_array( $data['url_schemes.list'] ) ) {
-			$data['url_schemes.list'] = array();
+		if ( ! isset( $data['schemes.list'] ) || ! is_array( $data['schemes.list'] ) ) {
+			$data['schemes.list'] = array();
 			return $data;
 		}
-		foreach ( $data['url_schemes.list'] as &$item ) {
+		foreach ( $data['schemes.list'] as &$item ) {
 			if ( ! isset( $item['author'] ) || ! is_array( $item['author'] ) || ! isset( $item['author']['id'] ) ) {
 				continue;
 			}
