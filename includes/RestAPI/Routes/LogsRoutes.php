@@ -71,7 +71,7 @@ Route::get(
 				$user      = get_user_by( 'id', $item->user_id );
 				$user_data = array(
 					'id'           => 0,
-					'display_name' => 'Guest User',
+					'display_name' => __( 'Guest User', 'hrt' ),
 					'avatar_url'   => '',
 				);
 

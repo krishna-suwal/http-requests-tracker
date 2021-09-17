@@ -120,16 +120,21 @@ class Setting extends ModelCore {
 			if ( ! isset( $item['author'] ) || ! is_array( $item['author'] ) || ! isset( $item['author']['id'] ) ) {
 				continue;
 			}
-			$author = get_user_by( 'id', $item['author']['id'] );
-
-			if ( is_wp_error( $author ) ) {
-				continue;
-			}
-			$item['author'] = array(
-				'id'           => $author->ID,
-				'display_name' => $author->data->display_name,
-				'avatar_url'   => get_avatar_url( $author->ID ),
+			$author      = get_user_by( 'id', $item['author']['id'] );
+			$author_data = array(
+				'id'           => 0,
+				'display_name' => __( 'Guest User', 'hrt' ),
+				'avatar_url'   => '',
 			);
+
+			if ( $author && ! is_wp_error( $author ) ) {
+				$author_data = array(
+					'id'           => $author->ID,
+					'display_name' => $author->data->display_name,
+					'avatar_url'   => get_avatar_url( $author->ID ),
+				);
+			}
+			$item['author'] = $author_data;
 		}
 		return $data;
 	}

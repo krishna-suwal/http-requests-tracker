@@ -18,9 +18,8 @@ import UrlSchemesList from './UrlSchemesList';
 const getNewUrlScheme = (data: any) => ({
 	...data,
 	id: nanoid(),
-	author: {
-		id: 1,
-	},
+	// @ts-ignore
+	author: window._HRT_.current_user,
 });
 
 const AllUrlSchemes = () => {

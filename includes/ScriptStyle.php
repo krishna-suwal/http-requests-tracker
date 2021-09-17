@@ -58,7 +58,7 @@ class ScriptStyle {
 					'context'  => array( 'admin', 'public' ),
 					'callback' => 'hrt_is_backend',
 				),
-				'backend'          => array(
+				'backend'        => array(
 					'src'      => self::get_asset_url( "/assets/js/build/hrt-backend{$suffix}.js" ),
 					'deps'     => array( 'react', 'wp-components', 'wp-element', 'wp-i18n', 'wp-polyfill' ),
 					'context'  => 'admin',
@@ -94,15 +94,31 @@ class ScriptStyle {
 	 * @since 0.1.1
 	 */
 	public static function localize_admin_scripts() {
+		$current_user = array(
+			'id'           => 0,
+			'display_name' => __( 'Guest User', 'hrt' ),
+			'avatar_url'   => '',
+		);
+
+		if ( is_user_logged_in() ) {
+			$user         = get_current_user();
+			$current_user = array(
+				'id'           => $user->ID,
+				'display_name' => $user->display_name,
+				'avatar_url'   => get_avatar_url( $user->ID ),
+			);
+		}
+
 		self::$localized_scripts = apply_filters(
 			'hrt_localized_scripts',
 			array(
 				'backend' => array(
 					'name' => '_HRT_',
 					'data' => array(
-						'rootApiUrl' => esc_url_raw( untrailingslashit( rest_url() ) ),
-						'nonce'      => wp_create_nonce( 'wp_rest' ),
-						'home_url'   => home_url(),
+						'rootApiUrl'   => esc_url_raw( untrailingslashit( rest_url() ) ),
+						'nonce'        => wp_create_nonce( 'wp_rest' ),
+						'home_url'     => home_url(),
+						'current_user' => $current_user,
 					),
 				),
 			)
