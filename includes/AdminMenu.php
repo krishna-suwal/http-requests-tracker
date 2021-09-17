@@ -78,15 +78,6 @@ class AdminMenu {
 			array( __CLASS__, 'display_main_page' )
 		);
 
-		add_submenu_page(
-			'hrt',
-			esc_html__( 'Debugger', 'hrt' ),
-			esc_html__( 'Debugger', 'hrt' ),
-			'manage_options',
-			'hrt#/debugger',
-			array( __CLASS__, 'display_main_page' )
-		);
-
 		remove_submenu_page( 'hrt', 'hrt' );
 	}
 

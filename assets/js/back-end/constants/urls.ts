@@ -4,7 +4,6 @@ const urls = {
 	settings: base + 'settings',
 	logs: base + 'logs',
 	stats: base + 'stats',
-	categories: base + 'courses/categories',
 };
 
 export default urls;

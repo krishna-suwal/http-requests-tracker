@@ -8,7 +8,6 @@ const routes = {
 		edit: '/url-schemes/:urlSchemId/edit',
 	},
 	settings: '/settings',
-	debugger: '/debugger',
 	notFound: '/not-found',
 };
 
