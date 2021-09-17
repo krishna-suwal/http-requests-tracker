@@ -24,9 +24,6 @@ const tabStyles = {
 	py: '6',
 	px: 0,
 	mx: 4,
-	_hover: {
-		color: 'blue.500',
-	},
 };
 
 const tabPanelStyles = {
@@ -46,10 +43,13 @@ const AllStats = () => {
 	);
 
 	return (
-		<Tabs index={tabIndex} onChange={(index) => setTabIndex(index)}>
-			<Stack direction="column" spacing="8" align="center">
+		<Tabs
+			index={tabIndex}
+			onChange={(index) => setTabIndex(index)}
+			colorScheme="green">
+			<Stack direction="column" align="center">
 				<Header>
-					<TabList borderBottom="none" bg="white">
+					<TabList borderBottom="none">
 						<Tab
 							sx={tabStyles}
 							onClick={() => {
@@ -75,16 +75,14 @@ const AllStats = () => {
 					</TabList>
 				</Header>
 				<Container maxW="container.xl">
-					<Stack direction="column" spacing="2">
-						<TabPanels>
-							<TabPanel sx={tabPanelStyles}>
-								<Logs />
-							</TabPanel>
-							<TabPanel sx={tabPanelStyles}>
-								<Statistics />
-							</TabPanel>
-						</TabPanels>
-					</Stack>
+					<TabPanels>
+						<TabPanel sx={tabPanelStyles}>
+							<Logs />
+						</TabPanel>
+						<TabPanel sx={tabPanelStyles}>
+							<Statistics />
+						</TabPanel>
+					</TabPanels>
 				</Container>
 			</Stack>
 		</Tabs>

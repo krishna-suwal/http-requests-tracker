@@ -30,7 +30,7 @@ interface Props {
 
 const LogsFilter: React.FC<Props> = (props) => {
 	const { filterParams, setFilterParams, users = [] } = props;
-	const { handleSubmit, register, setValue } = useForm();
+	const { handleSubmit, register } = useForm();
 	const [isMobile] = useMediaQuery('(min-width: 48em)');
 	const [isOpen, setIsOpen] = useState(isMobile);
 
@@ -63,6 +63,8 @@ const LogsFilter: React.FC<Props> = (props) => {
 						spacing="4"
 						mt={[6, null, 0]}>
 						<Select
+							size="sm"
+							w="auto"
 							{...register('type')}
 							defaultValue={filterParams?.type}
 							placeholder={__('All Types', 'masteriyo')}>
@@ -74,6 +76,8 @@ const LogsFilter: React.FC<Props> = (props) => {
 						</Select>
 
 						<Select
+							size="sm"
+							w="auto"
 							{...register('user_id')}
 							defaultValue={filterParams?.user_id}
 							placeholder={__('All Users', 'masteriyo')}>
@@ -84,7 +88,12 @@ const LogsFilter: React.FC<Props> = (props) => {
 							))}
 						</Select>
 
-						<Button colorScheme="blue" type="submit">
+						<Button
+							colorScheme="green"
+							type="submit"
+							size="sm"
+							borderRadius="3xl"
+							px="6">
 							{__('Filter', 'hrt')}
 						</Button>
 					</Stack>

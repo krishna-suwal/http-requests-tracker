@@ -8,13 +8,13 @@ import {
 	Box,
 	Button,
 	ButtonGroup,
-	Container,
 	Stack,
 	Table,
 	Tbody,
 	Th,
 	Thead,
 	Tr,
+	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/toast';
@@ -56,6 +56,7 @@ const Logs: React.FC = () => {
 	const cancelRef = React.useRef<any>();
 	const [deleteItemId, setDeleteItemId] = useState<number>();
 	const queryClient = useQueryClient();
+	const tableBorderColor = useColorModeValue('gray.100', 'gray.700');
 
 	const { onClose, onOpen, isOpen } = useDisclosure();
 	const toast = useToast({
@@ -100,59 +101,55 @@ const Logs: React.FC = () => {
 
 	return (
 		<>
-			<Container maxW="container.xl">
-				<Box bg="white" py="12" shadow="box" mx="auto">
-					<Stack direction="column" spacing="10">
-						{logsQuery.isSuccess && (
-							<LogsFilter
-								filterParams={filterParams}
-								setFilterParams={setFilterParams}
-								users={logsQuery.data?.extra.users}
-							/>
-						)}
+			<Box border="1px" borderRadius="md" py="8" borderColor={tableBorderColor}>
+				<Stack direction="column" spacing="10">
+					{logsQuery.isSuccess && (
+						<LogsFilter
+							filterParams={filterParams}
+							setFilterParams={setFilterParams}
+							users={logsQuery.data?.extra.users}
+						/>
+					)}
 
-						<Stack direction="column" spacing="8">
-							<Table size="sm" sx={tableStyles}>
-								<Thead>
-									<Tr>
-										<Th>{__('Title', 'hrt')}</Th>
-										<Th>{__('Description', 'hrt')}</Th>
-										<Th>{__('Type', 'hrt')}</Th>
-										<Th>{__('Date', 'masteriyo')}</Th>
-										<Th>{__('User', 'hrt')}</Th>
-										<Th>{__('Actions', 'hrt')}</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{logsQuery.isLoading && <SkeletonLogsList />}
-									{logsQuery.isSuccess &&
-										(logsQuery?.data?.data.length === 0 ? (
-											<EmptyInfo message={__('No logs found.', 'hrt')} />
-										) : (
-											logsQuery.data?.data?.map((item: any, index: number) => (
-												<LogItem
-													key={item.id}
-													data={item}
-													onClickDelete={() => {
-														setDeleteItemId(item.id);
-														onOpen();
-													}}
-												/>
-											))
-										))}
-								</Tbody>
-							</Table>
-						</Stack>
-					</Stack>
-				</Box>
-				{logsQuery.isSuccess && (
-					<Pagination
-						metaData={logsQuery.data.meta}
-						setFilterParams={setFilterParams}
-						perPageText="Logs Per Page:"
-					/>
-				)}
-			</Container>
+					<Table size="sm" sx={tableStyles} variant="striped">
+						<Thead>
+							<Tr>
+								<Th>{__('Title', 'hrt')}</Th>
+								<Th>{__('Description', 'hrt')}</Th>
+								<Th>{__('Type', 'hrt')}</Th>
+								<Th>{__('Date', 'masteriyo')}</Th>
+								<Th>{__('User', 'hrt')}</Th>
+								<Th>{__('Actions', 'hrt')}</Th>
+							</Tr>
+						</Thead>
+						<Tbody>
+							{logsQuery.isLoading && <SkeletonLogsList />}
+							{logsQuery.isSuccess &&
+								(logsQuery?.data?.data.length === 0 ? (
+									<EmptyInfo message={__('No logs found.', 'hrt')} />
+								) : (
+									logsQuery.data?.data?.map((item: any) => (
+										<LogItem
+											key={item.id}
+											data={item}
+											onClickDelete={() => {
+												setDeleteItemId(item.id);
+												onOpen();
+											}}
+										/>
+									))
+								))}
+						</Tbody>
+					</Table>
+				</Stack>
+			</Box>
+			{logsQuery.isSuccess && (
+				<Pagination
+					metaData={logsQuery.data.meta}
+					setFilterParams={setFilterParams}
+					perPageText="Logs Per Page:"
+				/>
+			)}
 			<AlertDialog
 				isOpen={isOpen}
 				onClose={onClose}

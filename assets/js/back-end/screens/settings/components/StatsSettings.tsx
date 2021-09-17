@@ -43,6 +43,7 @@ const StatsSettings: React.FC<Props> = (props) => {
 							<Switch
 								{...field}
 								defaultChecked={data['stats.allow_stats_on_frontend']}
+								colorScheme="green"
 							/>
 						)}
 					/>

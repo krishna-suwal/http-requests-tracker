@@ -1,13 +1,12 @@
 import { useToast } from '@chakra-ui/toast';
 import { __ } from '@wordpress/i18n';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 import urls from '../constants/urls';
 import { SetttingsMap } from '../types';
 import API from '../utils/api';
 import { useRegisterSaveHandler, useSaver } from './saving-signals';
 
 const useAppSavers = () => {
-	const queryClient = useQueryClient();
 	const settingsApi = new API(urls.settings);
 	const { savingComplete: savedSettings } = useSaver('settings');
 	const toast = useToast({

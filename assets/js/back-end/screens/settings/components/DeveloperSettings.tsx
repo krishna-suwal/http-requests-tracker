@@ -52,6 +52,7 @@ const DeveloperSettings: React.FC<Props> = (props) => {
 							<Switch
 								{...field}
 								defaultChecked={data['developer.template_debug']}
+								colorScheme="green"
 							/>
 						)}
 					/>
@@ -74,7 +75,11 @@ const DeveloperSettings: React.FC<Props> = (props) => {
 					<Controller
 						name="developer>debug"
 						render={({ field }) => (
-							<Switch {...field} defaultChecked={data['developer.debug']} />
+							<Switch
+								{...field}
+								defaultChecked={data['developer.debug']}
+								colorScheme="green"
+							/>
 						)}
 					/>
 				</Stack>

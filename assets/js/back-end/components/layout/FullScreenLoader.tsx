@@ -6,7 +6,7 @@ const FullScreenLoader = () => {
 		<Center h="calc(100vh - 60px)">
 			<Spinner
 				size="lg"
-				color="blue.500"
+				color="green.500"
 				emptyColor="gray.200"
 				thickness="3px"
 			/>

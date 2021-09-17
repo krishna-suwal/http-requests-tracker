@@ -8,6 +8,7 @@ import {
 	Td,
 	Text,
 	Tr,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
@@ -24,17 +25,21 @@ interface Props {
 const LogItem: React.FC<Props> = (props) => {
 	const { data, onClickDelete } = props;
 	const created_at = getLocalTime(data.created_at);
+	const authorColor = useColorModeValue('gray.600', 'gray.400');
+	const titleColor = useColorModeValue('gray.600', 'gray.300');
 
 	return (
 		<Tr>
 			<Td>
-				<Text fontWeight="semibold">{data.title}</Text>
+				<Text fontWeight="semibold" color={titleColor}>
+					{data.title}
+				</Text>
 			</Td>
 			<Td>
-				<Text>{data.description}</Text>
+				<Text color={authorColor}>{data.description}</Text>
 			</Td>
 			<Td>
-				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
+				<Badge bg="green.200" color="black" fontSize="10px" ml="2" mt="-2">
 					{getLogTypeLabel(data.type)}
 				</Badge>
 			</Td>
@@ -48,7 +53,7 @@ const LogItem: React.FC<Props> = (props) => {
 						direction="row"
 						spacing="2"
 						alignItems="center"
-						color="gray.600">
+						color={authorColor}>
 						<Icon as={BiCalendar} />
 						<Text fontSize="xs" fontWeight="medium">
 							{created_at}
@@ -59,7 +64,7 @@ const LogItem: React.FC<Props> = (props) => {
 			<Td>
 				<Stack direction="row" spacing="2" alignItems="center">
 					<Avatar src={data.user?.avatar_url} size="xs" />
-					<Text fontSize="xs" fontWeight="medium" color="gray.600">
+					<Text fontSize="xs" fontWeight="medium" color={authorColor}>
 						{data.user?.display_name}
 					</Text>
 				</Stack>

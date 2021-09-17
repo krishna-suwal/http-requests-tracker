@@ -140,10 +140,10 @@ const HrtPagination: React.FC<Props> = (props) => {
 										key={`pagination_page_${page}`}
 										page={page}
 										_hover={{
-											bg: 'blue.400',
+											bg: 'green.400',
 										}}
 										_current={{
-											bg: 'blue.400',
+											bg: 'green.400',
 											fontSize: 'sm',
 											color: 'white',
 										}}

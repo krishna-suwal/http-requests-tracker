@@ -131,7 +131,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 
 							<Divider />
 							<ButtonGroup>
-								<Button colorScheme="blue" type="submit">
+								<Button colorScheme="green" type="submit">
 									{__('Add', 'hrt')}
 								</Button>
 								<Button

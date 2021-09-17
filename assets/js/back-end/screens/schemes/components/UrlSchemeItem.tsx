@@ -8,6 +8,7 @@ import {
 	Td,
 	Text,
 	Tr,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
@@ -38,11 +39,13 @@ interface Props {
 
 const UrlSchemeItem: React.FC<Props> = (props) => {
 	const { data, onClickDelete, onChangeEnable } = props;
+	const authorColor = useColorModeValue('gray.600', 'gray.50');
 
 	return (
 		<Tr>
 			<Td>
 				<Switch
+					colorScheme="green"
 					defaultChecked={data.enable}
 					onChange={(e) => onChangeEnable(e.target.checked)}
 				/>
@@ -51,7 +54,7 @@ const UrlSchemeItem: React.FC<Props> = (props) => {
 				<Text>{data.title}</Text>
 			</Td>
 			<Td>
-				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
+				<Badge bg="green.200" color="black" fontSize="10px" ml="2" mt="-2">
 					{getSchemeTypeLabel(data)}
 				</Badge>
 			</Td>
@@ -61,7 +64,7 @@ const UrlSchemeItem: React.FC<Props> = (props) => {
 			<Td>
 				<Stack direction="row" spacing="2" alignItems="center">
 					<Avatar src={data.author?.avatar_url} size="xs" />
-					<Text fontSize="xs" fontWeight="medium" color="gray.600">
+					<Text fontSize="xs" fontWeight="medium" color={authorColor}>
 						{data.author?.display_name}
 					</Text>
 				</Stack>
@@ -73,7 +76,7 @@ const UrlSchemeItem: React.FC<Props> = (props) => {
 							':urlSchemId',
 							data.id.toString()
 						)}>
-						<Button leftIcon={<BiEdit />} colorScheme="blue" size="xs">
+						<Button leftIcon={<BiEdit />} colorScheme="green" size="xs">
 							{__('Edit')}
 						</Button>
 					</RouterLink>
