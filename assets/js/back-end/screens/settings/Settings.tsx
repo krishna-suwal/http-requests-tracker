@@ -1,6 +1,8 @@
 import {
 	Box,
 	Container,
+	Heading,
+	Stack,
 	Tab,
 	TabList,
 	TabPanel,
@@ -63,10 +65,15 @@ const Settings = () => {
 						isLoading: isSavingSetting,
 						isDisabled: settingsQuery.isLoading || !settingsQuery.isSuccess,
 					}}>
-					<TabList borderBottom="none">
-						<Tab sx={tabStyles}>{__('General', 'hrt')}</Tab>
-						<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
-					</TabList>
+					<Stack direction="row" align="center" spacing="10">
+						<Heading fontSize="md" fontWeight="bold" color="gray.500">
+							{__('Settings', 'hrt')}
+						</Heading>
+						<TabList borderBottom="none">
+							<Tab sx={tabStyles}>{__('General', 'hrt')}</Tab>
+							<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
+						</TabList>
+					</Stack>
 				</Header>
 				<Container maxW="container.xl" pt="5">
 					<Box border="1px" borderColor={borderColor} borderRadius="md" p="8">

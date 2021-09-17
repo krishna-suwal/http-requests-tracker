@@ -1,5 +1,6 @@
 import {
 	Container,
+	Heading,
 	Icon,
 	Stack,
 	Tab,
@@ -49,30 +50,35 @@ const AllStats = () => {
 			colorScheme="green">
 			<Stack direction="column" align="center">
 				<Header>
-					<TabList borderBottom="none">
-						<Tab
-							sx={tabStyles}
-							onClick={() => {
-								history.push({
-									pathname: routes.stats.index,
-									search: '?page=logs',
-								});
-							}}>
-							<Icon as={BiBook} sx={iconStyles} />
-							{__('Logs', 'hrt')}
-						</Tab>
-						<Tab
-							sx={tabStyles}
-							onClick={() => {
-								history.push({
-									pathname: routes.stats.index,
-									search: '?page=statistics',
-								});
-							}}>
-							<Icon as={BiStats} sx={iconStyles} />
-							{__('Statistics', 'hrt')}
-						</Tab>
-					</TabList>
+					<Stack direction="row" align="center" spacing="10">
+						<Heading fontSize="md" fontWeight="bold" color="gray.500">
+							{__('Stats', 'hrt')}
+						</Heading>
+						<TabList borderBottom="none">
+							<Tab
+								sx={tabStyles}
+								onClick={() => {
+									history.push({
+										pathname: routes.stats.index,
+										search: '?page=logs',
+									});
+								}}>
+								<Icon as={BiBook} sx={iconStyles} />
+								{__('Logs', 'hrt')}
+							</Tab>
+							<Tab
+								sx={tabStyles}
+								onClick={() => {
+									history.push({
+										pathname: routes.stats.index,
+										search: '?page=statistics',
+									});
+								}}>
+								<Icon as={BiStats} sx={iconStyles} />
+								{__('Statistics', 'hrt')}
+							</Tab>
+						</TabList>
+					</Stack>
 				</Header>
 				<Container maxW="container.xl">
 					<TabPanels>

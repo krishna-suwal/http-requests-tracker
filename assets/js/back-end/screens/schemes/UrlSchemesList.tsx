@@ -9,6 +9,7 @@ import {
 	Button,
 	ButtonGroup,
 	Container,
+	Heading,
 	Icon,
 	Stack,
 	Table,
@@ -59,7 +60,11 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 					label: __('Add Scheme', 'hrt'),
 					action: () => history.push(routes.urlSchemes.add),
 					icon: <Icon as={BiPlus} fontSize="md" />,
-				}}></Header>
+				}}>
+				<Heading fontSize="md" fontWeight="bold" color="gray.500">
+					{__('Schemes', 'hrt')}
+				</Heading>
+			</Header>
 			<Container maxW="container.xl" py="4">
 				<Box
 					border="1px"
