@@ -9,6 +9,7 @@ import { useSaver } from '../../hooks/saving-signals';
 import { SetttingsMap, UrlSchemeType } from '../../types';
 import API from '../../utils/api';
 import { removeArrayItemObjBy, updateArrayItemObj } from '../../utils/array';
+import { cache } from '../../utils/cache';
 import useArray from '../../utils/useArray';
 import AddNewUrlScheme from './AddNewUrlScheme';
 import EditUrlScheme from './EditUrlScheme';
@@ -23,7 +24,7 @@ const getNewUrlScheme = (data: any) => ({
 });
 
 const AllUrlSchemes = () => {
-	const { array: urlSchemes, push, set } = useArray([]);
+	const { array: urlSchemes, set } = useArray(cache.get('url-schemes', []));
 	const history = useHistory();
 	const { save } = useSaver('settings');
 	const settingsApi = new API(urls.settings);
@@ -33,6 +34,7 @@ const AllUrlSchemes = () => {
 		{
 			onSuccess: function (data) {
 				set(data['url_schemes.list']);
+				cache.set('url-schemes', data['url_schemes.list']);
 			},
 		}
 	);
@@ -44,6 +46,7 @@ const AllUrlSchemes = () => {
 		save({
 			'url_schemes.list': newList,
 		});
+		cache.set('url-schemes', newList);
 		history.push({
 			pathname: routes.urlSchemes.list,
 		});
@@ -62,6 +65,7 @@ const AllUrlSchemes = () => {
 			'url_schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
+		cache.set('url-schemes', newUrlSchemes);
 	};
 	const onUpdateUrlScheme = (data: UrlSchemeType) => {
 		const newUrlSchemes = updateArrayItemObj('id', data.id, data, urlSchemes);
@@ -73,6 +77,7 @@ const AllUrlSchemes = () => {
 			'url_schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
+		cache.set('url-schemes', newUrlSchemes);
 	};
 	const onRemoveItem = (id: number) => {
 		const newUrlSchemes = removeArrayItemObjBy('id', id, urlSchemes);
@@ -81,6 +86,7 @@ const AllUrlSchemes = () => {
 			'url_schemes.list': newUrlSchemes,
 		});
 		set(newUrlSchemes);
+		cache.set('url-schemes', newUrlSchemes);
 	};
 
 	if (settingsQuery.isLoading) {
