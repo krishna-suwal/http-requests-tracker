@@ -1,18 +1,18 @@
 import React, { createContext, useMemo, useState } from 'react';
 
 export const HrtContext = createContext<{
-	mtoOptions: any;
-	setMtoOptions?: any;
-}>({ mtoOptions: null });
+	hrtOptions: any;
+	setHrtOptions?: any;
+}>({ hrtOptions: null });
 
 const HrtProvider: React.FC = ({ children }) => {
-	const [mtoOptions, setMtoOptions] = useState<any>({});
+	const [hrtOptions, setHrtOptions] = useState<any>({});
 	const providerValue = useMemo(
 		() => ({
-			mtoOptions: mtoOptions,
-			setMtoOptions: setMtoOptions,
+			hrtOptions: hrtOptions,
+			setHrtOptions: setHrtOptions,
 		}),
-		[mtoOptions, setMtoOptions]
+		[hrtOptions, setHrtOptions]
 	);
 
 	return (

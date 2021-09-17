@@ -53,8 +53,9 @@ function hrt_prepare_scheme( $scheme_args ) {
 
 	try {
 		$scheme = hrt( "url-scheme.{$scheme_args['type']}" );
-	} catch ( \Throwable $th ) {
+	} catch ( \Throwable $e ) {
 		// TODO Put logger.
+		$e->getMessage();
 	}
 	$scheme = apply_filters( 'hrt_prepare_scheme', $scheme, $scheme_args['type'], $scheme_args );
 

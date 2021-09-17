@@ -67,7 +67,7 @@ const LogsFilter: React.FC<Props> = (props) => {
 							w="auto"
 							{...register('type')}
 							defaultValue={filterParams?.type}
-							placeholder={__('All Types', 'masteriyo')}>
+							placeholder={__('All Types', 'hrt')}>
 							{logFilterTypes.map((option: any) => (
 								<option key={option.value} value={option.value}>
 									{option.label}
@@ -80,7 +80,7 @@ const LogsFilter: React.FC<Props> = (props) => {
 							w="auto"
 							{...register('user_id')}
 							defaultValue={filterParams?.user_id}
-							placeholder={__('All Users', 'masteriyo')}>
+							placeholder={__('All Users', 'hrt')}>
 							{users.map((user) => (
 								<option key={user.id} value={user.id}>
 									{user.display_name}

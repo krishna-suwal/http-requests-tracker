@@ -133,7 +133,7 @@ Route::deletable(
 		if ( is_null( $object ) ) {
 			return new \WP_Error(
 				'hrt_rest_not_found',
-				__( 'Sorry, the spcefied log does not exist.', 'masteriyo' ),
+				__( 'Sorry, the spcefied log does not exist.', 'hrt' ),
 				array(
 					'status' => 404,
 				)
@@ -153,7 +153,7 @@ Route::deletable(
 		if ( ! $result ) {
 			return new \WP_Error(
 				'hrt_rest_cannot_delete',
-				__( 'Sorry, the spcefied log could not be deleted.', 'masteriyo' )
+				__( 'Sorry, the spcefied log could not be deleted.', 'hrt' )
 			);
 		}
 

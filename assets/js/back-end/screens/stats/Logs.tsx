@@ -69,7 +69,7 @@ const Logs: React.FC = () => {
 		{
 			onError: (error: any) => {
 				toast({
-					title: __('Failed to fetch logs', 'masteriyo'),
+					title: __('Failed to fetch logs', 'hrt'),
 					description: `${error.response?.data?.message}`,
 					isClosable: true,
 					status: 'error',
@@ -86,7 +86,7 @@ const Logs: React.FC = () => {
 		},
 		onError: (error: any) => {
 			toast({
-				title: __('Failed to delete log', 'masteriyo'),
+				title: __('Failed to delete log', 'hrt'),
 				description: `${error.response?.data?.message}`,
 				isClosable: true,
 				status: 'error',
@@ -117,7 +117,7 @@ const Logs: React.FC = () => {
 								<Th>{__('Title', 'hrt')}</Th>
 								<Th>{__('Description', 'hrt')}</Th>
 								<Th>{__('Type', 'hrt')}</Th>
-								<Th>{__('Date', 'masteriyo')}</Th>
+								<Th>{__('Date', 'hrt')}</Th>
 								<Th>{__('User', 'hrt')}</Th>
 								<Th>{__('Actions', 'hrt')}</Th>
 							</Tr>

@@ -381,7 +381,7 @@ class ModelCore implements \HRT\Contracts\ModelCore {
 				return $value;
 			}
 
-			if ( is_a( $value, 'Masteriyo\DateTime' ) ) {
+			if ( is_a( $value, 'HRT\DateTime' ) ) {
 				$datetime = $value;
 			} elseif ( is_numeric( $value ) ) {
 				// Timestamps are handled as UTC timestamps in all cases.
@@ -389,19 +389,19 @@ class ModelCore implements \HRT\Contracts\ModelCore {
 			} else {
 				// Strings are defined in local WP timezone. Convert to UTC.
 				if ( 1 === preg_match( '/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(Z|((-|\+)\d{2}:\d{2}))$/', $value, $date_bits ) ) {
-					$offset    = ! empty( $date_bits[7] ) ? iso8601_timezone_to_offset( $date_bits[7] ) : masteriyo_timezone_offset();
+					$offset    = ! empty( $date_bits[7] ) ? iso8601_timezone_to_offset( $date_bits[7] ) : hrt_timezone_offset();
 					$timestamp = gmmktime( $date_bits[4], $date_bits[5], $date_bits[6], $date_bits[2], $date_bits[3], $date_bits[1] ) - $offset;
 				} else {
-					$timestamp = masteriyo_string_to_timestamp( get_gmt_from_date( gmdate( 'Y-m-d H:i:s', masteriyo_string_to_timestamp( $value ) ) ) );
+					$timestamp = hrt_string_to_timestamp( get_gmt_from_date( gmdate( 'Y-m-d H:i:s', hrt_string_to_timestamp( $value ) ) ) );
 				}
 				$datetime = new \DateTime( "@{$timestamp}", new \DateTimeZone( 'UTC' ) );
 			}
 
 			// Set local timezone or offset.
 			if ( get_option( 'timezone_string' ) ) {
-				$datetime->setTimezone( new \DateTimeZone( masteriyo_timezone_string() ) );
+				$datetime->setTimezone( new \DateTimeZone( hrt_timezone_string() ) );
 			} else {
-				$datetime->set_utc_offset( masteriyo_timezone_offset() );
+				$datetime->set_utc_offset( hrt_timezone_offset() );
 			}
 
 			return $datetime;

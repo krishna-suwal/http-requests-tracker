@@ -47,6 +47,9 @@
     "phpcs": [
       "phpcs"
     ],
+    "phpcs:strict": [
+      "phpcs --warning-severity=0 -s --ignore-annotations --extensions=php,html ."
+    ],
     "phpcbf": [
       "phpcbf"
     ],

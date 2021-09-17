@@ -60,7 +60,7 @@ class DBLogger {
 		$user_id    = get_current_user_id();
 		$created_at = current_time( 'mysql', true );
 		$type       = $scheme['type'];
-		$data       = json_encode(
+		$data       = wp_json_encode(
 			array(
 				'scheme' => $scheme,
 				'url'    => $url,
@@ -68,12 +68,15 @@ class DBLogger {
 		);
 
 		if ( 'regex' === $scheme['type'] ) {
+			/* translators: %1$s: Regular Expression, %2$s URL */
 			$description = sprintf( __( 'Matched with regex "%1$s" > %2$s', 'hrt' ), $scheme['regex'], $url );
 		}
 		if ( 'absolute' === $scheme['type'] ) {
+			/* translators: %s: URL */
 			$description = sprintf( __( 'Matched with absolute URL "%s"', 'hrt' ), $scheme['url'] );
 		}
 		if ( 'relative' === $scheme['type'] ) {
+			/* translators: %1$s: Relative URL, %2$s URL */
 			$description = sprintf( __( 'Matched with relative URL "%1$s" > %2$s', 'hrt' ), $scheme['url'], $url );
 		}
 
@@ -84,18 +87,23 @@ class DBLogger {
 				$description = sprintf( __( 'Ajax request log', 'hrt' ), $url );
 			}
 			if ( 'search_query' === $scheme['predefined_type'] ) {
+				/* translators: %s: URL */
 				$description = sprintf( __( 'Search query request log > %s', 'hrt' ), $url );
 			}
 			if ( 'front_page_query' === $scheme['predefined_type'] ) {
+				/* translators: %s: URL */
 				$description = sprintf( __( 'Front page request log > %s', 'hrt' ), $url );
 			}
 			if ( 'blog_homepage_query' === $scheme['predefined_type'] ) {
+				/* translators: %s: URL */
 				$description = sprintf( __( 'Blog homepage request log > %s', 'hrt' ), $url );
 			}
 			if ( 'feed_query' === $scheme['predefined_type'] ) {
+				/* translators: %s: URL */
 				$description = sprintf( __( 'Feed query request log > %s', 'hrt' ), $url );
 			}
 			if ( 'heartbeat' === $scheme['predefined_type'] ) {
+				/* translators: %s: URL */
 				$description = sprintf( __( 'Heartbeat request log > %s', 'hrt' ), $url );
 			}
 		}

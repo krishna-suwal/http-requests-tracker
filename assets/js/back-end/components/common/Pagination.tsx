@@ -99,7 +99,7 @@ const HrtPagination: React.FC<Props> = (props) => {
 					`Showing ${displayCurrentPageLowest} -
 					${displayCurrentPageHighest}
 					out of ${metaData?.total}`,
-					'masteriyo'
+					'hrt'
 				)}
 			</Text>
 			<HStack>

@@ -17,14 +17,14 @@ const useAppSavers = () => {
 		{
 			onSuccess: () => {
 				toast({
-					title: __('Saved', 'masteriyo'),
+					title: __('Saved', 'hrt'),
 					isClosable: true,
 					status: 'success',
 				});
 			},
 			onError: (error: any) => {
 				toast({
-					title: __('Failed to update settings', 'masteriyo'),
+					title: __('Failed to update settings', 'hrt'),
 					description: `${error.response?.data?.message}`,
 					isClosable: true,
 					status: 'error',

@@ -53,6 +53,7 @@ class CorePermissions {
 	 */
 	public static function current_user_has_cap( $cap ) {
 		if ( ! current_user_can( $cap ) ) {
+			/* translators: %s: Capability slug */
 			throw new \Exception( sprintf( __( "User does not have capability '%s'", 'hrt' ), $cap ) );
 		}
 		return true;
@@ -81,6 +82,7 @@ class CorePermissions {
 		}
 
 		if ( count( $missing_caps ) > 0 ) {
+			/* translators: %s: Capability slug */
 			throw new \Exception( sprintf( __( 'User does not have capabilities: %s', 'hrt' ), implode( ', ', $missing_caps ) ) );
 		}
 
@@ -105,6 +107,7 @@ class CorePermissions {
 		$user = wp_get_current_user();
 
 		if ( ! in_array( $role, (array) $user->roles, true ) ) {
+			/* translators: %s: Role slug */
 			throw new \Exception( sprintf( __( "User does not have role '%s'", 'hrt' ), $role ) );
 		}
 

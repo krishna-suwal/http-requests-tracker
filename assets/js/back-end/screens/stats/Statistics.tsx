@@ -39,7 +39,7 @@ const Statistics: React.FC<Props> = () => {
 	const statsQuery = useQuery<StatsMap>('stats', () => statsApi.list(), {
 		onError: (error: any) => {
 			toast({
-				title: __('Failed to fetch logs', 'masteriyo'),
+				title: __('Failed to fetch logs', 'hrt'),
 				description: `${error.response?.data?.message}`,
 				isClosable: true,
 				status: 'error',

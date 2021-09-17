@@ -56,7 +56,7 @@ const Header: React.FC<Props> = (props) => {
 									emptyColor="gray.200"
 									thickness="1px"
 								/>{' '}
-								<Text>{__('Saving...', 'masteriyo')}</Text>
+								<Text>{__('Saving...', 'hrt')}</Text>
 							</Stack>
 						)}
 					</Stack>
