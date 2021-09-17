@@ -34,7 +34,8 @@
     "phpcompatibility/phpcompatibility-wp": "2.1.0",
     "sirbrillig/phpcs-variable-analysis": "2.8",
     "phpunit/phpunit": "5.*",
-    "wp-cli/wp-cli": "^2.4"
+    "wp-cli/wp-cli": "^2.4",
+    "wp-cli/i18n-command": "^2.2"
   },
   "scripts": {
     "test:php:unit": [
@@ -53,7 +54,7 @@
       "wp i18n make-pot . --slug=hrt"
     ],
     "makepot": [
-      "\"vendor/bin/wp\" i18n make-pot . ./i18n/languages/hrt.pot"
+      "\"vendor/bin/wp\" i18n make-pot . ./i18n/languages/hrt.pot --include=\"assets/js/build/hrt-backend.0.1.0.min.js,assets/js/build/hrt-backend.js,includes\""
     ]
   },
   "extra": {
