@@ -82,12 +82,14 @@
     "gulp-uglify": "3.0.2",
     "gulp-zip": "5.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "make-dir": "3.1.0",
     "mini-css-extract-plugin": "0.11.0",
     "prettier": "2.3.1",
     "prettier-plugin-organize-imports": "2.2.0",
     "react-refresh": "0.8.3",
     "react-router-dom": "^5.2.0",
     "sass": "1.32.8",
+    "sharp": "0.29.1",
     "style-loader": "2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "terser-webpack-plugin": "4",
@@ -107,6 +109,7 @@
     "dev": "gulp dev",
     "release": "yarn build && gulp release",
     "lint": "eslint ./assets/js --ext ts,tsx",
-    "prettier": "prettier --check ./assets/js/**/*.tsx ./assets/js/**/*.ts"
+    "prettier": "prettier --check ./assets/js/**/*.tsx ./assets/js/**/*.ts",
+    "build-icons": "node ./scripts/build-icons.js"
   }
 }

@@ -33,12 +33,13 @@ class AdminMenu {
 	 */
 	public static function init_menus() {
 		$dashicon = 'dashicons-admin-links';
+
 		// phpcs:disable
-		// if ( isset( $_GET['page'] ) && 'hrt' === $_GET['page'] ) {
-		// 	$dashicon = 'data:image/svg+xml;base64,' . base64_encode( hrt_get_svg( 'dashicon-white' ) );
-		// } else {
-		// 	$dashicon = 'data:image/svg+xml;base64,' . base64_encode( hrt_get_svg( 'dashicon-grey' ) );
-		// }
+		if ( isset( $_GET['page'] ) && 'hrt' === $_GET['page'] ) {
+			$dashicon = 'data:image/svg+xml;base64,' . base64_encode( hrt_get_svg( 'dashicon-white' ) );
+		} else {
+			$dashicon = 'data:image/svg+xml;base64,' . base64_encode( hrt_get_svg( 'dashicon-grey' ) );
+		}
 		// phpcs:enable
 
 		add_menu_page(

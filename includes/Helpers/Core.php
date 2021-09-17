@@ -1,4 +1,7 @@
 <?php
+
+use HRT\Constants;
+
 /**
  * Core helper functions.
  *
@@ -53,4 +56,62 @@ function hrt_is_log_request( $url ) {
 		'scheme' => null,
 		'url'    => null,
 	);
+}
+
+
+/**
+ * Get a svg file contents.
+ *
+ * @since 1.0.0
+ *
+ * @param string  $name SVG filename.
+ * @param boolean $echo Whether to echo the contents or not.
+ *
+ * @return void|string
+ */
+function hrt_get_svg( $name, $echo = false ) {
+	global $wp_filesystem;
+
+	$credentials = request_filesystem_credentials( '', 'direct' );
+
+	// Bail early if the credentials is wrong.
+	if ( ! $credentials ) {
+		return;
+	}
+
+	\WP_Filesystem( $credentials );
+
+	$file_name     = Constants::get( 'HRT_ASSETS' ) . "/svg/{$name}.svg";
+	$file_contents = '';
+
+	if ( file_exists( $file_name ) && is_readable( $file_name ) ) {
+		$file_contents = $wp_filesystem->get_contents( $file_name );
+	}
+
+	$file_contents = apply_filters( 'hrt_svg_file', $file_contents, $name );
+
+	$svg_args = array(
+		'svg'   => array(
+			'class'           => true,
+			'aria-hidden'     => true,
+			'aria-labelledby' => true,
+			'role'            => true,
+			'xmlns'           => true,
+			'width'           => true,
+			'height'          => true,
+			'viewbox'         => true, // <= Must be lower case!
+		),
+		'g'     => array( 'fill' => true ),
+		'title' => array( 'title' => true ),
+		'path'  => array(
+			'd'    => true,
+			'fill' => true,
+		),
+	);
+
+	if ( $echo ) {
+		echo wp_kses( $file_contents, $svg_args );
+	} else {
+		return $file_contents;
+	}
 }
