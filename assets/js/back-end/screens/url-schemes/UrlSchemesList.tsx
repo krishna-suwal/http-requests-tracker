@@ -72,7 +72,7 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 										<Th></Th>
 										<Th>{__('Title', 'hrt')}</Th>
 										<Th>{__('Type', 'hrt')}</Th>
-										<Th></Th>
+										<Th>{__('Relative Data', 'hrt')}</Th>
 										<Th>{__('Author', 'hrt')}</Th>
 										<Th>{__('Actions', 'hrt')}</Th>
 									</Tr>

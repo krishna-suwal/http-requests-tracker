@@ -15,16 +15,19 @@ import { BiEdit, BiTrash } from 'react-icons/bi';
 import { Link as RouterLink } from 'react-router-dom';
 import routes from '../../../constants/routes';
 import { UrlSchemeType } from '../../../types';
+import { isEmpty } from '../../../utils/utils';
 import { getSchemeTypeLabel } from '../data';
 
 const getExtraData = (scheme: UrlSchemeType) => {
+	let str: any = '—';
+
 	if ('regex' === scheme.type) {
-		return scheme.regex;
+		str = isEmpty(scheme.regex) ? str : scheme.regex;
 	}
 	if ('absolute' === scheme.type || 'relative' === scheme.type) {
-		return scheme.url;
+		str = isEmpty(scheme.url) ? str : scheme.url;
 	}
-	return '—';
+	return str;
 };
 
 interface Props {
