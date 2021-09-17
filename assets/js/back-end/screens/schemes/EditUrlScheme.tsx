@@ -155,7 +155,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 
 								<Divider />
 								<ButtonGroup>
-									<Button colorScheme="blue" type="submit">
+									<Button colorScheme="green" type="submit">
 										{__('Update', 'hrt')}
 									</Button>
 									<Button

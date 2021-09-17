@@ -12,7 +12,7 @@ const EmptyInfo: React.FC<Props> = (props) => {
 		<Tr>
 			<Td>
 				<Stack direction="row" spacing="1" align="center">
-					<Icon as={BiInfoCircle} color="blue.400" />
+					<Icon as={BiInfoCircle} color="green.400" />
 					<Text as="span" fontWeight="medium" color="gray.600" fontSize="sm">
 						{message}
 					</Text>

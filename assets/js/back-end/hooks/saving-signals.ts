@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { SavingSignalsContext } from '../context/SavingSignalsProvider';
 
 interface SaveHandlerType {
-	(arg1: SaveHandlerArgsType): void;
+	(arg1: SaveHandlerArgsType): void; // eslint-disable-line
 }
 interface SaveHandlerArgsType {
 	data: any;

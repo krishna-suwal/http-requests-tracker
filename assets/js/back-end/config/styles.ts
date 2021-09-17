@@ -10,9 +10,6 @@ export const tableStyles = {
 		pb: '6',
 		borderBottom: 'none',
 	},
-	'tr:nth-of-type(2n+1) td': {
-		bg: '#f8f9fa',
-	},
 
 	tr: {
 		'th, td': {

@@ -16,6 +16,7 @@ import {
 	Th,
 	Thead,
 	Tr,
+	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
 import { __ } from '@wordpress/i18n';
@@ -39,63 +40,60 @@ const UrlSchemesList: React.FC<Props> = (props) => {
 	const { items, onClickRemoveItem, onChangeEnable } = props;
 	const history = useHistory();
 	const cancelRef = React.useRef<any>();
-
+	const tableBorderColor = useColorModeValue('gray.100', 'gray.700');
 	const { onClose, onOpen, isOpen } = useDisclosure();
-
 	const [deleteItemId, setDeleteItemId] = useState<number>();
-
 	const onDeletePress = (index: number) => {
 		onOpen();
 		setDeleteItemId(index);
 	};
-
 	const onDeleteCofirm = () => {
 		onClickRemoveItem(deleteItemId);
 		onClose();
 	};
 
 	return (
-		<Stack direction="column" spacing="8" alignItems="center">
+		<Stack direction="column" alignItems="center">
 			<Header
 				primaryBtn={{
 					label: __('Add Scheme', 'hrt'),
 					action: () => history.push(routes.urlSchemes.add),
 					icon: <Icon as={BiPlus} fontSize="md" />,
 				}}></Header>
-			<Container maxW="container.xl">
-				<Box bg="white" py="12" shadow="box" mx="auto">
-					<Stack direction="column" spacing="10">
-						<Stack direction="column" spacing="8">
-							<Table size="sm" sx={tableStyles}>
-								<Thead>
-									<Tr>
-										<Th></Th>
-										<Th>{__('Title', 'hrt')}</Th>
-										<Th>{__('Type', 'hrt')}</Th>
-										<Th>{__('Relative Data', 'hrt')}</Th>
-										<Th>{__('Author', 'hrt')}</Th>
-										<Th>{__('Actions', 'hrt')}</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{items.length === 0 ? (
-										<EmptyInfo message={__('Nothing found.', 'hrt')} />
-									) : (
-										items.map((item: any) => (
-											<UrlSchemeItem
-												key={item.id}
-												data={item}
-												onClickDelete={() => onDeletePress(item.id)}
-												onChangeEnable={(isChecked: boolean) =>
-													onChangeEnable(item.id, isChecked)
-												}
-											/>
-										))
-									)}
-								</Tbody>
-							</Table>
-						</Stack>
-					</Stack>
+			<Container maxW="container.xl" py="4">
+				<Box
+					border="1px"
+					borderColor={tableBorderColor}
+					borderRadius="md"
+					py="8">
+					<Table size="sm" sx={tableStyles} variant="striped">
+						<Thead>
+							<Tr>
+								<Th></Th>
+								<Th>{__('Title', 'hrt')}</Th>
+								<Th>{__('Type', 'hrt')}</Th>
+								<Th>{__('Relative Data', 'hrt')}</Th>
+								<Th>{__('Author', 'hrt')}</Th>
+								<Th>{__('Actions', 'hrt')}</Th>
+							</Tr>
+						</Thead>
+						<Tbody>
+							{items.length === 0 ? (
+								<EmptyInfo message={__('Nothing found.', 'hrt')} />
+							) : (
+								items.map((item: any) => (
+									<UrlSchemeItem
+										key={item.id}
+										data={item}
+										onClickDelete={() => onDeletePress(item.id)}
+										onChangeEnable={(isChecked: boolean) =>
+											onChangeEnable(item.id, isChecked)
+										}
+									/>
+								))
+							)}
+						</Tbody>
+					</Table>
 				</Box>
 			</Container>
 			<AlertDialog
