@@ -12,13 +12,13 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { BiInfoCircle } from 'react-icons/bi';
 import { infoIconStyles } from '../../../config/styles';
-import { StatsSettingsType } from '../../../types';
+import { GeneralSettingsType } from '../../../types';
 
 interface Props {
-	data: StatsSettingsType;
+	data: GeneralSettingsType;
 }
 
-const StatsSettings: React.FC<Props> = (props) => {
+const GeneralSettings: React.FC<Props> = (props) => {
 	const { data } = props;
 
 	return (
@@ -26,9 +26,9 @@ const StatsSettings: React.FC<Props> = (props) => {
 			<FormControl>
 				<Stack direction="row">
 					<FormLabel minW="xs">
-						{__('Allow to show stats on frontend', 'hrt')}
+						{__('Start tracking http requests', 'hrt')}
 						<Tooltip
-							label={__('Allow to show stats on frontend', 'hrt')}
+							label={__('Enable/Disable tracking of http requests', 'hrt')}
 							hasArrow
 							fontSize="xs">
 							<Box as="span" sx={infoIconStyles}>
@@ -38,11 +38,11 @@ const StatsSettings: React.FC<Props> = (props) => {
 					</FormLabel>
 
 					<Controller
-						name="stats>allow_stats_on_frontend"
+						name="schemes>enable"
 						render={({ field }) => (
 							<Switch
 								{...field}
-								defaultChecked={data['stats.allow_stats_on_frontend']}
+								defaultChecked={data['schemes.enable']}
 								colorScheme="green"
 							/>
 						)}
@@ -53,4 +53,4 @@ const StatsSettings: React.FC<Props> = (props) => {
 	);
 };
 
-export default StatsSettings;
+export default GeneralSettings;

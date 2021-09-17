@@ -19,8 +19,8 @@ import { SkeletonSettings } from '../../skeleton';
 import { SetttingsMap } from '../../types';
 import API from '../../utils/api';
 import { prepareSettingData } from '../../utils/utils';
-import AdvancedSettings from './components/DeveloperSettings';
-import GeneralSettings from './components/StatsSettings';
+import DeveloperSettings from './components/DeveloperSettings';
+import GeneralSettings from './components/GeneralSettings';
 
 const Settings = () => {
 	const borderColor = useColorModeValue('gray.100', 'gray.700');
@@ -64,7 +64,7 @@ const Settings = () => {
 						isDisabled: settingsQuery.isLoading || !settingsQuery.isSuccess,
 					}}>
 					<TabList borderBottom="none">
-						<Tab sx={tabStyles}>{__('Stats', 'hrt')}</Tab>
+						<Tab sx={tabStyles}>{__('General', 'hrt')}</Tab>
 						<Tab sx={tabStyles}>{__('Developer', 'hrt')}</Tab>
 					</TabList>
 				</Header>
@@ -86,7 +86,7 @@ const Settings = () => {
 										<SkeletonSettings />
 									) : (
 										settingsQuery.data && (
-											<AdvancedSettings data={settingsQuery.data} />
+											<DeveloperSettings data={settingsQuery.data} />
 										)
 									)}
 								</TabPanel>

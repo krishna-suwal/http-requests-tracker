@@ -48,12 +48,13 @@ class Setting extends ModelCore {
 	 * @var array
 	 */
 	protected $default_data = array(
-		'stats.allow_stats_on_frontend' => true,
+		'stats.allow_stats_on_frontend' => false,
 
+		'schemes.enable'                => true,
 		'schemes.list'                  => array(),
 
-		'developer.template_debug'      => true,
-		'developer.debug'               => true,
+		'developer.template_debug'      => false,
+		'developer.debug'               => false,
 	);
 
 	/**

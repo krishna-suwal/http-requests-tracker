@@ -32,32 +32,6 @@ const DeveloperSettings: React.FC<Props> = (props) => {
 					'hrt'
 				)}
 			</Alert>
-			<FormControl>
-				<Stack direction="row">
-					<FormLabel minW="3xs">
-						{__('Template Debug', 'hrt')}
-						<Tooltip
-							label={__('Use for template debugging', 'hrt')}
-							hasArrow
-							fontSize="xs">
-							<Box as="span" sx={infoIconStyles}>
-								<Icon as={BiInfoCircle} />
-							</Box>
-						</Tooltip>
-					</FormLabel>
-
-					<Controller
-						name="developer>template_debug"
-						render={({ field }) => (
-							<Switch
-								{...field}
-								defaultChecked={data['developer.template_debug']}
-								colorScheme="green"
-							/>
-						)}
-					/>
-				</Stack>
-			</FormControl>
 
 			<FormControl>
 				<Stack direction="row">

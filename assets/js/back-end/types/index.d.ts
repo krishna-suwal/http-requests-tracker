@@ -36,6 +36,10 @@ interface StatsMap {
 	};
 }
 
+export interface GeneralSettingsType {
+	'schemes.enable': boolean;
+}
+
 export interface StatsSettingsType {
 	'stats.allow_stats_on_frontend': boolean;
 }
@@ -45,6 +49,9 @@ export interface DeveloperSettingsType {
 	'developer.debug': boolean;
 }
 
-export interface SetttingsMap extends StatsSettingsType, DeveloperSettingsType {
+export interface SetttingsMap
+	extends GeneralSettingsType,
+		StatsSettingsType,
+		DeveloperSettingsType {
 	'schemes.list': UrlSchemeType[];
 }

@@ -55,6 +55,10 @@ Route::editable(
 					'type'    => 'array',
 					'context' => array( 'view', 'edit' ),
 				),
+				'schemes.enable'                => array(
+					'type'    => 'boolean',
+					'context' => array( 'view', 'edit' ),
+				),
 				'developer.template_debug'      => array(
 					'type'    => 'boolean',
 					'context' => array( 'view', 'edit' ),

@@ -24,6 +24,13 @@ class DBLogger {
 	 * @since 0.1.0
 	 */
 	public static function run() {
+		$is_enabled = hrt( 'setting' )->get( 'schemes.enable' );
+		$is_enabled = hrt_string_to_bool( apply_filters( 'hrt_is_tracking_enabled', $is_enabled ) );
+
+		if ( ! $is_enabled ) {
+			return;
+		}
+
 		$result = (array) apply_filters( 'hrt_is_log_current_request', hrt_is_log_current_request() );
 
 		if ( isset( $result['is_log'] ) && true !== $result['is_log'] ) {
