@@ -469,6 +469,8 @@ class ScriptStyle {
 			}
 		}
 
-		wp_set_script_translations( 'hrt-admin', 'hrt', Constants::get( 'HRT_LANGUAGES' ) );
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'hrt-backend', 'hrt', Constants::get( 'HRT_LANGUAGES' ) );
+		}
 	}
 }
