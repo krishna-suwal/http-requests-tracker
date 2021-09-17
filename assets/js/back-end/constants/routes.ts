@@ -3,9 +3,9 @@ const routes = {
 		index: '/stats',
 	},
 	urlSchemes: {
-		list: '/url-schemes',
-		add: '/url-schemes/new',
-		edit: '/url-schemes/:urlSchemId/edit',
+		list: '/schemes',
+		add: '/schemes/new',
+		edit: '/schemes/:urlSchemId/edit',
 	},
 	settings: '/settings',
 	notFound: '/not-found',
