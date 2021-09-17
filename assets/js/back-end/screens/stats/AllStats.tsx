@@ -15,8 +15,8 @@ import { BiBook, BiStats } from 'react-icons/bi';
 import { useHistory, useLocation } from 'react-router-dom';
 import Header from '../../components/common/Header';
 import routes from '../../constants/routes';
-import Graphs from './Graphs';
 import Logs from './Logs';
+import Statistics from './Statistics';
 
 const tabStyles = {
 	fontWeight: 'medium',
@@ -41,7 +41,9 @@ const AllStats = () => {
 	const history = useHistory();
 	const { search } = useLocation();
 	const { page } = queryString.parse(search);
-	const [tabIndex, setTabIndex] = useState<number>(page === 'graphs' ? 1 : 0);
+	const [tabIndex, setTabIndex] = useState<number>(
+		page === 'statistics' ? 1 : 0
+	);
 
 	return (
 		<Tabs index={tabIndex} onChange={(index) => setTabIndex(index)}>
@@ -64,7 +66,7 @@ const AllStats = () => {
 							onClick={() => {
 								history.push({
 									pathname: routes.stats.index,
-									search: '?page=graphs',
+									search: '?page=statistics',
 								});
 							}}>
 							<Icon as={BiStats} sx={iconStyles} />
@@ -79,7 +81,7 @@ const AllStats = () => {
 								<Logs />
 							</TabPanel>
 							<TabPanel sx={tabPanelStyles}>
-								<Graphs />
+								<Statistics />
 							</TabPanel>
 						</TabPanels>
 					</Stack>

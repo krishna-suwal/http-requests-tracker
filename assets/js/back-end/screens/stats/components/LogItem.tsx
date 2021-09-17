@@ -35,7 +35,7 @@ const LogItem: React.FC<Props> = (props) => {
 			</Td>
 			<Td>
 				<Badge bg="blue.200" fontSize="10px" ml="2" mt="-2">
-					{getLogTypeLabel(data)}
+					{getLogTypeLabel(data.type)}
 				</Badge>
 			</Td>
 			<Td>

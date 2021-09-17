@@ -19,6 +19,23 @@ interface LogType {
 	created_at: string;
 }
 
+interface StatsMap {
+	basic: {
+		types: {
+			regex: number;
+			absolute: number;
+			relative: number;
+			'predefined.ajax': number;
+		};
+		users: {
+			id: number;
+			display_name: string;
+			avatar_url: string;
+			count: number;
+		}[];
+	};
+}
+
 export interface StatsSettingsType {
 	'stats.allow_stats_on_frontend': boolean;
 }

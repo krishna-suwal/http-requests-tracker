@@ -80,6 +80,7 @@ const Logs: React.FC = () => {
 	const deleteLog = useMutation((id: number) => logsApi.delete(id), {
 		onSuccess: () => {
 			queryClient.invalidateQueries('logs');
+			queryClient.invalidateQueries('stats');
 			onClose();
 		},
 		onError: (error: any) => {
