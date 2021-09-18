@@ -69,6 +69,7 @@ class HTTPRequestsTracker {
 
 		add_filter( 'plugin_row_meta', array( $this, 'add_plugin_links' ), 10, 2 );
 		add_filter( 'plugin_action_links_' . Constants::get( 'HRT_PLUGIN_BASENAME' ), array( $this, 'add_plugin_action_links' ) );
+		add_action( 'in_admin_header', array( $this, 'hide_admin_notices' ) );
 	}
 
 	/**
@@ -169,5 +170,50 @@ class HTTPRequestsTracker {
 		}
 
 		return array_merge( $action_link_htmls, $links );
+	}
+
+	/**
+	 * Hide admin notices from the plugin's admin screens.
+	 *
+	 * @since 0.1.0
+	 */
+	public function hide_admin_notices() {
+		// Bail if we're not on the plugin's screen or page.
+		if ( empty( $_REQUEST['page'] ) || false === strpos( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ), 'hrt' ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			return;
+		}
+
+		global $wp_filter;
+		$ignore_notices = array();
+
+		foreach ( array( 'user_admin_notices', 'admin_notices', 'all_admin_notices' ) as $wp_notice ) {
+			if ( empty( $wp_filter[ $wp_notice ] ) ) {
+				continue;
+			}
+
+			$hook_callbacks = $wp_filter[ $wp_notice ]->callbacks;
+
+			if ( empty( $hook_callbacks ) || ! is_array( $hook_callbacks ) ) {
+				continue;
+			}
+
+			foreach ( $hook_callbacks as $priority => $hooks ) {
+				foreach ( $hooks as $name => $callback ) {
+					if ( ! empty( $name ) && in_array( $name, $ignore_notices, true ) ) {
+						continue;
+					}
+					if (
+						! empty( $callback['function'] ) &&
+						! is_a( $callback['function'], '\Closure' ) &&
+						isset( $callback['function'][0], $callback['function'][1] ) &&
+						is_object( $callback['function'][0] ) &&
+						in_array( $callback['function'][1], $ignore_notices, true )
+					) {
+						continue;
+					}
+					unset( $wp_filter[ $wp_notice ]->callbacks[ $priority ][ $name ] );
+				}
+			}
+		}
 	}
 }

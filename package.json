@@ -107,9 +107,10 @@
     "build": "webpack --mode production --config ./webpack/webpack.config.prod.js && gulp build",
     "build:analyze": "webpack --mode production --env.addons=bundleanalyzer --config ./webpack/webpack.config.prod.js",
     "dev": "gulp dev",
-    "release": "yarn build && gulp release",
-    "lint": "eslint ./assets/js --ext ts,tsx",
+    "release": "composer run makepot && yarn install && yarn build && gulp release",
+    "eslint": "eslint ./assets/js --ext ts,tsx",
     "prettier": "prettier --check ./assets/js/**/*.tsx ./assets/js/**/*.ts",
+    "js:lint": "yarn prettier && yarn eslint",
     "build-icons": "node ./scripts/build-icons.js"
   }
 }

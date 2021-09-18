@@ -58,11 +58,10 @@ function hrt_is_log_request( $url ) {
 	);
 }
 
-
 /**
  * Get a svg file contents.
  *
- * @since 1.0.0
+ * @since 0.1.0
  *
  * @param string  $name SVG filename.
  * @param boolean $echo Whether to echo the contents or not.

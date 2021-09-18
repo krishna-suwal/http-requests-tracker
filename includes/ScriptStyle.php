@@ -200,7 +200,9 @@ class ScriptStyle {
 		if ( Constants::is_true( 'SCRIPT_DEBUG' ) ) {
 			return '';
 		}
-		return '.min';
+		$version = Constants::get( 'HRT_VERSION' );
+
+		return ".{$version}.min";
 	}
 
 	/**
