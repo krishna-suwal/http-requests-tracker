@@ -6,9 +6,6 @@ import App from './App';
 const appRoot = document.getElementById('hrt-backend');
 
 if (appRoot) {
-	// Remove wp default form css to avoid conflict.
-	document.getElementById('forms-css')?.remove();
-
 	// Render app.
 	ReactDom.render(<App />, appRoot);
 }

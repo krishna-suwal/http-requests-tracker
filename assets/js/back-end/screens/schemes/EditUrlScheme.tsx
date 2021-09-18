@@ -68,10 +68,12 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 							borderColor={borderColor}
 							borderRadius="md"
 							p="8">
-							<FormControl display="flex" alignItems="center">
-								<FormLabel mb="0" minW="xs">
-									{__('Enable', 'hrt')}
-								</FormLabel>
+							<FormControl
+								display="flex"
+								alignItems="center"
+								maxW="sm"
+								justifyContent="space-between">
+								<FormLabel mb="0">{__('Enable', 'hrt')}</FormLabel>
 								<Switch
 									colorScheme="green"
 									defaultChecked={data.enable}
@@ -82,6 +84,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 							<FormControl isInvalid={!!errors?.title}>
 								<FormLabel>{__('Title', 'hrt')}</FormLabel>
 								<Input
+									size="sm"
 									defaultValue={data.title}
 									placeholder={__('Title', 'hrt')}
 									{...register('title')}
@@ -94,6 +97,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 							<FormControl isInvalid={!!errors?.type}>
 								<FormLabel>{__('Type', 'hrt')}</FormLabel>
 								<Select
+									size="sm"
 									defaultValue={data.type}
 									placeholder={__('Please select a type', 'hrt')}
 									{...register('type', {
@@ -114,6 +118,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								<FormControl isInvalid={!!errors?.url}>
 									<FormLabel>{__('URL', 'hrt')}</FormLabel>
 									<Input
+										size="sm"
 										defaultValue={data?.url}
 										placeholder={__('Absolute URL', 'hrt')}
 										{...register('url')}
@@ -128,6 +133,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								<FormControl isInvalid={!!errors?.regex}>
 									<FormLabel>{__('Pattern', 'hrt')}</FormLabel>
 									<Input
+										size="sm"
 										defaultValue={data?.regex}
 										type="regex"
 										{...register('regex')}
@@ -142,6 +148,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 								<FormControl isInvalid={!!errors?.predefined_type}>
 									<FormLabel>{__('Predefined Type', 'hrt')}</FormLabel>
 									<Select
+										size="sm"
 										defaultValue={data?.predefined_type}
 										placeholder={__('Please select a type', 'hrt')}
 										{...register('predefined_type', {
@@ -163,6 +170,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 							<Divider />
 							<ButtonGroup>
 								<Button
+									size="sm"
 									colorScheme="green"
 									type="submit"
 									borderRadius="3xl"
@@ -170,6 +178,7 @@ const EditUrlScheme: React.FC<Props> = (props) => {
 									{__('Update', 'hrt')}
 								</Button>
 								<Button
+									size="sm"
 									variant="outline"
 									borderRadius="3xl"
 									onClick={() =>

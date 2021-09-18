@@ -13,6 +13,14 @@ const theme = extendTheme({
 			'::placeholder': {
 				fontSize: 'sm',
 			},
+			'.wp-admin #hrt-backend select': {
+				background: 'inherit',
+				color: 'inherit',
+				maxW: 'inherit',
+				_hover: {
+					borderColor: 'inherit',
+				},
+			},
 		},
 	},
 	shadows: {

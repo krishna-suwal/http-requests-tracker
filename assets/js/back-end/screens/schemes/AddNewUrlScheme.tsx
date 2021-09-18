@@ -53,10 +53,12 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 						borderColor={borderColor}
 						borderRadius="md"
 						p="8">
-						<FormControl display="flex" alignItems="center">
-							<FormLabel mb="0" minW="xs">
-								{__('Enable', 'hrt')}
-							</FormLabel>
+						<FormControl
+							display="flex"
+							alignItems="center"
+							maxW="sm"
+							justifyContent="space-between">
+							<FormLabel mb="0">{__('Enable', 'hrt')}</FormLabel>
 							<Switch
 								colorScheme="green"
 								defaultChecked={true}
@@ -67,10 +69,10 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 						<FormControl isInvalid={!!errors?.title}>
 							<FormLabel>{__('Title', 'hrt')}</FormLabel>
 							<Input
+								size="sm"
 								defaultValue={__('Untitled', 'hrt')}
 								placeholder={__('Title', 'hrt')}
 								{...register('title')}
-								borderBottom="none"
 							/>
 							<FormErrorMessage>
 								{errors?.title && errors?.title?.message}
@@ -80,6 +82,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 						<FormControl isInvalid={!!errors?.type}>
 							<FormLabel>{__('Type', 'hrt')}</FormLabel>
 							<Select
+								size="sm"
 								placeholder={__('Please select a type', 'hrt')}
 								{...register('type', {
 									required: __('Please select a type', 'hrt'),
@@ -101,6 +104,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 								<Input
 									placeholder={__('Absolute URL', 'hrt')}
 									{...register('url')}
+									size="sm"
 								/>
 								<FormErrorMessage>
 									{errors?.url && errors?.url?.message}
@@ -111,7 +115,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 						{schemeType === 'regex' && (
 							<FormControl isInvalid={!!errors?.regex}>
 								<FormLabel>{__('Pattern', 'hrt')}</FormLabel>
-								<Input type="regex" {...register('regex')} />
+								<Input size="sm" type="regex" {...register('regex')} />
 								<FormErrorMessage>
 									{errors?.regex && errors?.regex?.message}
 								</FormErrorMessage>
@@ -122,6 +126,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 							<FormControl isInvalid={!!errors?.predefined_type}>
 								<FormLabel>{__('Predefined Type', 'hrt')}</FormLabel>
 								<Select
+									size="sm"
 									placeholder={__('Please select a type', 'hrt')}
 									{...register('predefined_type', {
 										required: __('Please select a type', 'hrt'),
@@ -141,6 +146,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 						<Divider />
 						<ButtonGroup>
 							<Button
+								size="sm"
 								colorScheme="green"
 								type="submit"
 								borderRadius="3xl"
@@ -148,6 +154,7 @@ const AddNewUrlScheme: React.FC<Props> = (props) => {
 								{__('Add', 'hrt')}
 							</Button>
 							<Button
+								size="sm"
 								variant="outline"
 								borderRadius="3xl"
 								onClick={() =>
