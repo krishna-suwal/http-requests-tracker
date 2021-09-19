@@ -16,6 +16,18 @@ const targetSizes = [
 		height: 144,
 		filename: 'logo.png',
 	},
+	{
+		width: null,
+		height: 28,
+		absPath: path.resolve(
+			__dirname,
+			'..',
+			'docs-src',
+			'static',
+			'img',
+			'favicon.png'
+		),
+	},
 ];
 
 // Build extension icons.
@@ -32,7 +44,7 @@ async function generateIcons() {
 			sharp(svgPath)
 				.png()
 				.resize({ width: size.width, height: size.height })
-				.toFile(`${iconsPath}/${size.filename}`);
+				.toFile(size.absPath ? size.absPath : `${iconsPath}/${size.filename}`);
 		})
 	);
 	console.log('Generated icons...');

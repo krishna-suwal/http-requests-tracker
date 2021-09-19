@@ -3,7 +3,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const baseConfig = require('./config.base');
-const WebpackBar = require('webpackbar');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
 
@@ -65,7 +65,7 @@ module.exports = (env) => ({
 		}),
 		new ErrorOverlayPlugin(),
 		new Dotenv(),
-		new WebpackBar(),
+		new ProgressBarPlugin(),
 		new ForkTsCheckerPlugin({
 			async: true,
 		}),
