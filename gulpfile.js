@@ -15,6 +15,10 @@ if (!process.env.WORDPRESS_URL && process.env.DEVELOPMENT) {
 }
 
 const fileList = {
+	wordpressOrg: {
+		src: '.wordpress-org/**/*',
+		dest: 'build/.wordpress-org',
+	},
 	includes: {
 		src: 'includes/**/*',
 		dest: 'build/includes',
@@ -60,6 +64,7 @@ const paths = {
 		src: ['assets/img/*.png', 'assets/img/*.jpg'],
 		dest: 'assets/img',
 	},
+
 	php: {
 		src: 'templates/**/*.php',
 	},
@@ -88,6 +93,7 @@ function removeRelease() {
 }
 
 const copyToBuild = [
+	() => src(fileList.wordpressOrg.src).pipe(dest(fileList.wordpressOrg.dest)),
 	() => src(fileList.includes.src).pipe(dest(fileList.includes.dest)),
 	() => src(fileList.assets.src).pipe(dest(fileList.assets.dest)),
 	() => src(fileList.templates.src).pipe(dest(fileList.templates.dest)),
