@@ -1,0 +1,91 @@
+openapi: "3.0.0"
+info:
+  version: "0.0.1"
+  title: "HTTP Requests Tracker API Documentation"
+  description: "Swagger documentation for api routes in HTTP Requests Tracker plugin. Don't forget to authenticate yourself using username and password before trying the routes."
+servers:
+  - url: "{ENV_WORDPRESS_URL}"
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+security:
+  - basicAuth: []
+tags:
+  - name: Logs
+  - name: Statistics
+  - name: Settings
+paths:
+  /logs:
+    get:
+      tags: [Logs]
+      summary: "Get logs"
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+          description: Type of log
+        - in: query
+          name: per_page
+          schema:
+            type: integer
+          description: Logs per page
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+          description: User ID
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Unauthorized"
+        200:
+          description: "OK"
+  /logs/{id}:
+    delete:
+      tags: [Logs]
+      summary: "Delete log"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID of a log
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Unauthorized"
+        200:
+          description: "OK"
+  /stats:
+    get:
+      tags: [Statistics]
+      summary: "Get statistics"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Unauthorized"
+        200:
+          description: "OK"
+  /settings:
+    get:
+      tags: [Settings]
+      summary: "Get settings"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Unauthorized"
+        200:
+          description: "OK"
