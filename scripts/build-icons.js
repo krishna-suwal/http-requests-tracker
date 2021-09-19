@@ -28,6 +28,26 @@ const targetSizes = [
 			'favicon.png'
 		),
 	},
+	{
+		width: 128,
+		height: 128,
+		absPath: path.resolve(
+			__dirname,
+			'..',
+			'.wordpress-org',
+			'icon-128x128.png'
+		),
+	},
+	{
+		width: 256,
+		height: 256,
+		absPath: path.resolve(
+			__dirname,
+			'..',
+			'.wordpress-org',
+			'icon-256x256.png'
+		),
+	},
 ];
 
 // Build extension icons.
