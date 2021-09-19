@@ -113,17 +113,12 @@ class HTTPRequestsTracker {
 
 		$hrt_links = array(
 			'docs'    => array(
-				'url'        => apply_filters( 'hrt_docs_url', '#' ),
+				'url'        => apply_filters( 'hrt_docs_url', 'https://krishna-suwal.github.io/http-requests-tracker/getting-started/' ),
 				'label'      => __( 'Docs', 'hrt' ),
 				'aria-label' => __( 'View hrt documentation', 'hrt' ),
 			),
-			'apidocs' => array(
-				'url'        => apply_filters( 'hrt_apidocs_url', '#' ),
-				'label'      => __( 'API docs', 'hrt' ),
-				'aria-label' => __( 'View hrt API docs', 'hrt' ),
-			),
 			'support' => array(
-				'url'        => apply_filters( 'hrt_community_support_url', 'https://wordpress.org/support/plugin/hrt/' ),
+				'url'        => apply_filters( 'hrt_community_support_url', 'https://wordpress.org/support/plugin/http-requests-tracker/' ),
 				'label'      => __( 'Community Support', 'hrt' ),
 				'aria-label' => __( 'Visit community forums', 'hrt' ),
 			),

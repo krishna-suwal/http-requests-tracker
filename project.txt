@@ -1,3 +1,4 @@
+# TODO: Remove tables on plugin deletion
 # Menus heirarchy
 - Stats
 --- Logs

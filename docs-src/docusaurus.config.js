@@ -62,7 +62,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 						},
 						{
 							href: 'https://wordpress.org/support/plugin/http-requests-tracker/',
-							label: 'Support',
+							label: 'Community Support',
 							position: 'right',
 						},
 						{
