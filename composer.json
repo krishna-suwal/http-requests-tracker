@@ -2,7 +2,7 @@
   "name": "krishna-suwal/http-requests-tracker",
   "description": "An http requests tracker plugin",
   "version": "0.1.0",
-  "homepage": "https://example.com",
+  "homepage": "https://krishna-suwal.github.io/http-requests-tracker",
   "license": "GPL-2.0-or-later",
   "type": "wordpress-plugin",
   "minimum-stability": "dev",

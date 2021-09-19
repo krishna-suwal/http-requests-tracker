@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:     HTTP Requests Tracker
- * Plugin URI:      https://example.com
+ * Plugin URI:      https://krishna-suwal.github.io/http-requests-tracker
  * Description:     Track http requests.
  * Author:          Krishna Suwal
- * Author URI:      https://example.com
+ * Author URI:      https://github.com/krishna-suwal
  * Version:         0.1.0
  * Text Domain:     hrt
  * Domain Path:     /i18n/languages

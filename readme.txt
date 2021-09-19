@@ -14,7 +14,7 @@ Track http requests in your website.
 
 Track any http requests that are being made to your website.
 
-Need any help? [Check Documentation](https://github.com/krishna-suwal/http-requests-tracker/)
+Need any help? Checkout [getting started tutorial](https://krishna-suwal.github.io/http-requests-tracker/getting-started/) and [Documentation](https://krishna-suwal.github.io/http-requests-tracker/getting-started/)
 
 ### Features And Options:
 
