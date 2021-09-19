@@ -27,3 +27,20 @@ i18n/languages/*.po
 i18n/languages/*.po~
 .vscode/launch.json
 yarn-error.log
+
+# Production
+/docs-src/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

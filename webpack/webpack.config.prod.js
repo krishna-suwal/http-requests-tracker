@@ -1,10 +1,9 @@
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const baseConfig = require('./config.base');
-const WebpackBar = require('webpackbar');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
 const BundleAnalyzerPlugin =
@@ -67,7 +66,7 @@ module.exports = (env) => ({
 		new MiniCSSExtractPlugin({ filename: 'hrt-[name].css' }),
 		new CleanWebpackPlugin(),
 		new Dotenv(),
-		new WebpackBar(),
+		new ProgressBarPlugin(),
 		new ForkTsCheckerPlugin({
 			async: false,
 		}),
