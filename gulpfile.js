@@ -107,6 +107,10 @@ function runComposerInBuild() {
 	return exec('cd build && composer install --no-dev --optimize-autoloader');
 }
 
+function removePhpTypeAnnotationsFromBuild() {
+	return exec('node ./scripts/remove-php-type-annotations-from-build.js');
+}
+
 function compressBuildWithoutVersion() {
 	return src('build/**/*')
 		.pipe(zip(`${pkg.name}.zip`))
@@ -126,6 +130,7 @@ const release = series(
 	build,
 	copyToBuild,
 	runComposerInBuild,
+	removePhpTypeAnnotationsFromBuild,
 	parallel(compressBuildWithVersion, compressBuildWithoutVersion)
 );
 
