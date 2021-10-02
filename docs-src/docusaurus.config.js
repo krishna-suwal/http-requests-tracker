@@ -14,7 +14,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 		favicon: 'img/favicon.png',
 		organizationName: 'krishna-suwal',
 		projectName: 'http-requests-tracker',
-		trailingSlash: false,
+		trailingSlash: true,
 
 		presets: [
 			[
