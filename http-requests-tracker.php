@@ -31,6 +31,35 @@ define( 'HRT_PLUGIN_REL_LANGUAGES_PATH', 'i18n/languages' );
  */
 require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
+// Check for the existence of assets folder.
+if ( ! file_exists( dirname( __FILE__ ) . '/assets/js/build/hrt-backend.js' ) ) {
+	add_action(
+		'admin_notices',
+		function() {
+			printf(
+				'<div class="notice notice-error is-dismissible"><p><strong>%s </strong>%s</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">%s</span></button></div>',
+				esc_html( 'HTTP Requests Tracker:' ),
+				__( 'Assets are need to be built. Run <code>yarn && yarn build</code> from the wp-content/plugins/http-requests-tracker directory.', 'hrt' ),
+				esc_html__( 'Dismiss this notice.', 'hrt' )
+			);
+		}
+	);
+
+	add_action(
+		'admin_init',
+		function() {
+			deactivate_plugins( plugin_basename( HRT_PLUGIN_FILE ) );
+
+			if ( isset( $_GET['activate'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				unset( $_GET['activate'] );
+			}
+		}
+	);
+
+	return;
+}
+
 /**
  * Bootstrap the appplication.
  *
